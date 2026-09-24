@@ -16,7 +16,7 @@ The next three milestones are:
 2. **N2 — Compile an exact binary grid into a plan:** deterministic recipes, strip production, panel batching, and stock allocation.
 3. **N3 — Approximate under a recipe budget:** merge/reassign recipes and return independently validated trade-offs.
 
-The N-prefix distinguishes these next milestones from the original M1–M4 outline. The existing implementation is a partial original M1. N1 completes more of that foundation; N2 corresponds to the original M2; N3 covers the approximation portion of original M3. Bitmap import and the local UI follow separately.
+The N-prefix distinguishes these next milestones from the original M1–M4 outline. The existing implementation meets the original M1 reference-plan replay exit gate, but does not complete the broader fabrication contract. N1 completes more of that foundation; N2 corresponds to the original M2; N3 covers the approximation portion of original M3. Bitmap import and the local UI follow separately.
 
 ### Scope that stays fixed
 
@@ -180,6 +180,10 @@ The validator must reconstruct rather than trust these claims:
 - Final trim follows retained outputs, with explicit saw kerf and residuals.
 
 Reject a post-panel side rip disguised as an intact row, not merely recuts performed after rotation. Check the permitted operation chain and cut axes between first glue and row rotation.
+
+Resolve degenerate assemblies explicitly before N2: the current schema requires at least two glue inputs and validation requires joints in both stages. Recommend initially restricting final assemblies to at least two rows, while permitting a single-strip recipe as a documented panel pass-through rather than inventing a glue joint. A configured second species need not appear in every recipe. Record any broader single-row support as a separate extension.
+
+Also freeze terminal-cut semantics: current `Box.cut` requires two positive children and positive kerf. The initial generator should leave the explicit required slicing reserve; it must not emit a zero-residual cut to represent a piece already ending at an existing boundary. Add boundary-use semantics only with corresponding provenance, handling, and ledger tests.
 
 ### N1.5 — Realistic reference, diagrams, and CI
 
