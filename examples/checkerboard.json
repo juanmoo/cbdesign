@@ -1,0 +1,26 @@
+{
+  "schema_version": "cbdesign-plan/v1",
+  "title": "Synthetic nominal two-row checkerboard example — not a universal shop default",
+  "assumptions": ["Synthetic dimensions only", "Roots are already-prepared finite strips, not rough stock", "Prepared mating faces are supplied by the declared preparation process", "Negligible glue-line thickness is a nominal model assumption"],
+  "shop": {"manufacturing_increment": 1000, "saw_kerf": 1000, "max_workpiece": [100000,100000,100000], "max_slice_length": 60000},
+  "stock": [
+    {"id":"a-stock","species":"maple","size":[10000,60000,32000]},
+    {"id":"b-stock","species":"walnut","size":[10000,60000,32000]}
+  ],
+  "operations": [
+    {"kind":"glue","id":"panel-glue","inputs":["a-stock","b-stock"],"output":"panel","axis":0,"stage":"first","prepared_faces":true,"negligible_glue_line":true},
+    {"kind":"cut","id":"slice-one","input":"panel","outputs":["slice-one-raw","panel-rest"],"axis":1,"retained":20000,"kerf":1000},
+    {"kind":"cut","id":"slice-two","input":"panel-rest","outputs":["slice-two-raw","reserve-offcut"],"axis":1,"retained":20000,"kerf":1000,"category":"other_offcuts"},
+    {"kind":"rotate","id":"turn-row-one","input":"slice-one-raw","output":"row-one","perm":[0,2,1],"sign":[1,1,-1]},
+    {"kind":"rotate","id":"turn-row-two-reversed","input":"slice-two-raw","output":"row-two","perm":[0,2,1],"sign":[-1,1,1]},
+    {"kind":"glue","id":"final-row-glue","inputs":["row-one","row-two"],"output":"rough-board","axis":1,"stage":"final","prepared_faces":true,"negligible_glue_line":true},
+    {"kind":"surface","id":"final-end-grain-flatten","input":"rough-board","output":"finished-board","removed":"final-flattening","axis":2,"side":"max","amount":2000,"category":"milling","process":"drum_sander"}
+  ],
+  "finishing":{"terminal":"finished-board","method":"drum_sander","end_grain_supported":true},
+  "dispositions":[
+    {"part":"reserve-offcut","category":"other_offcuts","reusable":true},
+    {"part":"final-flattening","category":"milling","reusable":false}
+  ],
+  "expected_final_size":[20000,64000,18000],
+  "template":{"recipes":[{"id":"ab","sequence":["maple","walnut"]}],"rows":[{"rotated_part":"row-one","recipe":"ab"},{"rotated_part":"row-two","recipe":"ab","reversed":true}]}
+}

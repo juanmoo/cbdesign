@@ -1,0 +1,31 @@
+{
+  "species": {
+    "maple": {
+      "balance": 0,
+      "finished": 11520000000000,
+      "kerf": 640000000000,
+      "milling": 1280000000000,
+      "other_offcuts": 5760000000000,
+      "stock": 19200000000000,
+      "trim": 0
+    },
+    "walnut": {
+      "balance": 0,
+      "finished": 11520000000000,
+      "kerf": 640000000000,
+      "milling": 1280000000000,
+      "other_offcuts": 5760000000000,
+      "stock": 19200000000000,
+      "trim": 0
+    }
+  },
+  "totals": {
+    "finished": 23040000000000,
+    "kerf": 1280000000000,
+    "milling": 2560000000000,
+    "other_offcuts": 11520000000000,
+    "stock": 38400000000000,
+    "trim": 0
+  },
+  "units": "cubic_micrometres"
+}

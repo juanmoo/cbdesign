@@ -1,0 +1,349 @@
+{
+  "coverage": {
+    "failed": [],
+    "not_evaluated": [
+      "interval_uncertainty_propagation",
+      "physical_machine_safety",
+      "joint_strength",
+      "finite_inventory",
+      "optimization",
+      "minimum_handling_dimensions",
+      "terminal_slicing_reserve",
+      "rough_stock_preparation_allowances"
+    ],
+    "passed": [
+      "strict_schema",
+      "topological_operations",
+      "exact_geometry",
+      "source_provenance_partition",
+      "terminal_disposition",
+      "proper_rotations",
+      "glue_compatibility",
+      "construction_template",
+      "final_dimensions",
+      "end_grain_exposure",
+      "increment",
+      "declared_saw_kerf",
+      "declared_workpiece_capacity",
+      "declared_slice_length_limit"
+    ]
+  },
+  "final": {
+    "part": "asym-finished",
+    "size_um": [
+      15000,
+      64000,
+      18000
+    ],
+    "species_volumes": {
+      "maple": 10368000000000,
+      "walnut": 6912000000000
+    }
+  },
+  "joints": [
+    {
+      "area": 1920000000,
+      "axis": 0,
+      "left": "maple-wide",
+      "operation": "asym-panel-glue",
+      "right": "maple-narrow",
+      "stage": "first"
+    },
+    {
+      "area": 1920000000,
+      "axis": 0,
+      "left": "maple-narrow",
+      "operation": "asym-panel-glue",
+      "right": "walnut",
+      "stage": "first"
+    },
+    {
+      "area": 340000000,
+      "axis": 1,
+      "left": "asym-row-normal",
+      "operation": "asym-final-glue",
+      "right": "asym-row-reversed",
+      "stage": "final"
+    }
+  ],
+  "operations": [
+    {
+      "axis": 0,
+      "id": "asym-panel-glue",
+      "input_sizes_um": {
+        "maple-narrow": [
+          3000,
+          60000,
+          32000
+        ],
+        "maple-wide": [
+          7000,
+          60000,
+          32000
+        ],
+        "walnut": [
+          7000,
+          60000,
+          32000
+        ]
+      },
+      "inputs": [
+        "maple-wide",
+        "maple-narrow",
+        "walnut"
+      ],
+      "joint_count": 2,
+      "kind": "glue",
+      "negligible_glue_line": true,
+      "output_sizes_um": {
+        "asym-panel": [
+          17000,
+          60000,
+          32000
+        ]
+      },
+      "outputs": [
+        "asym-panel"
+      ],
+      "prepared_faces": true,
+      "stage": "first"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "asym-first-slice",
+      "input_size_um": [
+        17000,
+        60000,
+        32000
+      ],
+      "inputs": [
+        "asym-panel"
+      ],
+      "kerf_um": 1000,
+      "kerf_volume_um3": 544000000000,
+      "kind": "cut",
+      "output_sizes_um": {
+        "asym-panel-rest": [
+          17000,
+          39000,
+          32000
+        ],
+        "asym-slice-a": [
+          17000,
+          20000,
+          32000
+        ]
+      },
+      "outputs": [
+        "asym-slice-a",
+        "asym-panel-rest"
+      ],
+      "retained_um": 20000,
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "asym-second-slice",
+      "input_size_um": [
+        17000,
+        39000,
+        32000
+      ],
+      "inputs": [
+        "asym-panel-rest"
+      ],
+      "kerf_um": 1000,
+      "kerf_volume_um3": 544000000000,
+      "kind": "cut",
+      "output_sizes_um": {
+        "asym-reserve": [
+          17000,
+          18000,
+          32000
+        ],
+        "asym-slice-b": [
+          17000,
+          20000,
+          32000
+        ]
+      },
+      "outputs": [
+        "asym-slice-b",
+        "asym-reserve"
+      ],
+      "retained_um": 20000,
+      "tool": "saw"
+    },
+    {
+      "id": "asym-normal-turn",
+      "input_size_um": [
+        17000,
+        20000,
+        32000
+      ],
+      "inputs": [
+        "asym-slice-a"
+      ],
+      "kind": "rotate",
+      "output_sizes_um": {
+        "asym-row-normal": [
+          17000,
+          32000,
+          20000
+        ]
+      },
+      "outputs": [
+        "asym-row-normal"
+      ],
+      "perm": [
+        0,
+        2,
+        1
+      ],
+      "sign": [
+        1,
+        1,
+        -1
+      ]
+    },
+    {
+      "id": "asym-reverse-turn",
+      "input_size_um": [
+        17000,
+        20000,
+        32000
+      ],
+      "inputs": [
+        "asym-slice-b"
+      ],
+      "kind": "rotate",
+      "output_sizes_um": {
+        "asym-row-reversed": [
+          17000,
+          32000,
+          20000
+        ]
+      },
+      "outputs": [
+        "asym-row-reversed"
+      ],
+      "perm": [
+        0,
+        2,
+        1
+      ],
+      "sign": [
+        -1,
+        1,
+        1
+      ]
+    },
+    {
+      "axis": 1,
+      "id": "asym-final-glue",
+      "input_sizes_um": {
+        "asym-row-normal": [
+          17000,
+          32000,
+          20000
+        ],
+        "asym-row-reversed": [
+          17000,
+          32000,
+          20000
+        ]
+      },
+      "inputs": [
+        "asym-row-normal",
+        "asym-row-reversed"
+      ],
+      "joint_count": 1,
+      "kind": "glue",
+      "negligible_glue_line": true,
+      "output_sizes_um": {
+        "asym-rough-board": [
+          17000,
+          64000,
+          20000
+        ]
+      },
+      "outputs": [
+        "asym-rough-board"
+      ],
+      "prepared_faces": true,
+      "stage": "final"
+    },
+    {
+      "amount_um": 2000,
+      "axis": 2,
+      "category": "milling",
+      "id": "asym-final-flatten",
+      "input_size_um": [
+        17000,
+        64000,
+        20000
+      ],
+      "inputs": [
+        "asym-rough-board"
+      ],
+      "kind": "surface",
+      "output_sizes_um": {
+        "asym-final-milling": [
+          17000,
+          64000,
+          2000
+        ],
+        "asym-flattened": [
+          17000,
+          64000,
+          18000
+        ]
+      },
+      "outputs": [
+        "asym-flattened",
+        "asym-final-milling"
+      ],
+      "process": "wide_belt_sander",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "trim",
+      "id": "asym-edge-trim",
+      "input_size_um": [
+        17000,
+        64000,
+        18000
+      ],
+      "inputs": [
+        "asym-flattened"
+      ],
+      "kerf_um": 1000,
+      "kerf_volume_um3": 1152000000000,
+      "kind": "cut",
+      "output_sizes_um": {
+        "asym-edge-offcut": [
+          1000,
+          64000,
+          18000
+        ],
+        "asym-finished": [
+          15000,
+          64000,
+          18000
+        ]
+      },
+      "outputs": [
+        "asym-finished",
+        "asym-edge-offcut"
+      ],
+      "retained_um": 15000,
+      "tool": "saw"
+    }
+  ],
+  "scope": "M1 nominal geometry and declared-profile checks only",
+  "status": "nominal_valid",
+  "warning": "Uncertainty propagation, machining-error bounds, physical safety, and structural-joint certification are not evaluated."
+}

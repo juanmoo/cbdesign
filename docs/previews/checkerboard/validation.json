@@ -1,0 +1,301 @@
+{
+  "coverage": {
+    "failed": [],
+    "not_evaluated": [
+      "interval_uncertainty_propagation",
+      "physical_machine_safety",
+      "joint_strength",
+      "finite_inventory",
+      "optimization",
+      "minimum_handling_dimensions",
+      "terminal_slicing_reserve",
+      "rough_stock_preparation_allowances"
+    ],
+    "passed": [
+      "strict_schema",
+      "topological_operations",
+      "exact_geometry",
+      "source_provenance_partition",
+      "terminal_disposition",
+      "proper_rotations",
+      "glue_compatibility",
+      "construction_template",
+      "final_dimensions",
+      "end_grain_exposure",
+      "increment",
+      "declared_saw_kerf",
+      "declared_workpiece_capacity",
+      "declared_slice_length_limit"
+    ]
+  },
+  "final": {
+    "part": "finished-board",
+    "size_um": [
+      20000,
+      64000,
+      18000
+    ],
+    "species_volumes": {
+      "maple": 11520000000000,
+      "walnut": 11520000000000
+    }
+  },
+  "joints": [
+    {
+      "area": 1920000000,
+      "axis": 0,
+      "left": "a-stock",
+      "operation": "panel-glue",
+      "right": "b-stock",
+      "stage": "first"
+    },
+    {
+      "area": 400000000,
+      "axis": 1,
+      "left": "row-one",
+      "operation": "final-row-glue",
+      "right": "row-two",
+      "stage": "final"
+    }
+  ],
+  "operations": [
+    {
+      "axis": 0,
+      "id": "panel-glue",
+      "input_sizes_um": {
+        "a-stock": [
+          10000,
+          60000,
+          32000
+        ],
+        "b-stock": [
+          10000,
+          60000,
+          32000
+        ]
+      },
+      "inputs": [
+        "a-stock",
+        "b-stock"
+      ],
+      "joint_count": 1,
+      "kind": "glue",
+      "negligible_glue_line": true,
+      "output_sizes_um": {
+        "panel": [
+          20000,
+          60000,
+          32000
+        ]
+      },
+      "outputs": [
+        "panel"
+      ],
+      "prepared_faces": true,
+      "stage": "first"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "slice-one",
+      "input_size_um": [
+        20000,
+        60000,
+        32000
+      ],
+      "inputs": [
+        "panel"
+      ],
+      "kerf_um": 1000,
+      "kerf_volume_um3": 640000000000,
+      "kind": "cut",
+      "output_sizes_um": {
+        "panel-rest": [
+          20000,
+          39000,
+          32000
+        ],
+        "slice-one-raw": [
+          20000,
+          20000,
+          32000
+        ]
+      },
+      "outputs": [
+        "slice-one-raw",
+        "panel-rest"
+      ],
+      "retained_um": 20000,
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "slice-two",
+      "input_size_um": [
+        20000,
+        39000,
+        32000
+      ],
+      "inputs": [
+        "panel-rest"
+      ],
+      "kerf_um": 1000,
+      "kerf_volume_um3": 640000000000,
+      "kind": "cut",
+      "output_sizes_um": {
+        "reserve-offcut": [
+          20000,
+          18000,
+          32000
+        ],
+        "slice-two-raw": [
+          20000,
+          20000,
+          32000
+        ]
+      },
+      "outputs": [
+        "slice-two-raw",
+        "reserve-offcut"
+      ],
+      "retained_um": 20000,
+      "tool": "saw"
+    },
+    {
+      "id": "turn-row-one",
+      "input_size_um": [
+        20000,
+        20000,
+        32000
+      ],
+      "inputs": [
+        "slice-one-raw"
+      ],
+      "kind": "rotate",
+      "output_sizes_um": {
+        "row-one": [
+          20000,
+          32000,
+          20000
+        ]
+      },
+      "outputs": [
+        "row-one"
+      ],
+      "perm": [
+        0,
+        2,
+        1
+      ],
+      "sign": [
+        1,
+        1,
+        -1
+      ]
+    },
+    {
+      "id": "turn-row-two-reversed",
+      "input_size_um": [
+        20000,
+        20000,
+        32000
+      ],
+      "inputs": [
+        "slice-two-raw"
+      ],
+      "kind": "rotate",
+      "output_sizes_um": {
+        "row-two": [
+          20000,
+          32000,
+          20000
+        ]
+      },
+      "outputs": [
+        "row-two"
+      ],
+      "perm": [
+        0,
+        2,
+        1
+      ],
+      "sign": [
+        -1,
+        1,
+        1
+      ]
+    },
+    {
+      "axis": 1,
+      "id": "final-row-glue",
+      "input_sizes_um": {
+        "row-one": [
+          20000,
+          32000,
+          20000
+        ],
+        "row-two": [
+          20000,
+          32000,
+          20000
+        ]
+      },
+      "inputs": [
+        "row-one",
+        "row-two"
+      ],
+      "joint_count": 1,
+      "kind": "glue",
+      "negligible_glue_line": true,
+      "output_sizes_um": {
+        "rough-board": [
+          20000,
+          64000,
+          20000
+        ]
+      },
+      "outputs": [
+        "rough-board"
+      ],
+      "prepared_faces": true,
+      "stage": "final"
+    },
+    {
+      "amount_um": 2000,
+      "axis": 2,
+      "category": "milling",
+      "id": "final-end-grain-flatten",
+      "input_size_um": [
+        20000,
+        64000,
+        20000
+      ],
+      "inputs": [
+        "rough-board"
+      ],
+      "kind": "surface",
+      "output_sizes_um": {
+        "final-flattening": [
+          20000,
+          64000,
+          2000
+        ],
+        "finished-board": [
+          20000,
+          64000,
+          18000
+        ]
+      },
+      "outputs": [
+        "finished-board",
+        "final-flattening"
+      ],
+      "process": "drum_sander",
+      "side": "max"
+    }
+  ],
+  "scope": "M1 nominal geometry and declared-profile checks only",
+  "status": "nominal_valid",
+  "warning": "Uncertainty propagation, machining-error bounds, physical safety, and structural-joint certification are not evaluated."
+}

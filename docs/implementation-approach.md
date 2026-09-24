@@ -1,6 +1,6 @@
 # Implementation approach
 
-Status: proposed implementation direction within the agreed scope. No code exists yet. Do not confuse these choices with a finished schema or benchmarked solver.
+Status: M1 executable fabrication-model prototype is implemented: strict JSON schema, exact nominal replay, provenance/ledger checks, CLI reports, SVG views, hand-authored fixtures, and regression tests. This document retains the planned architecture for later milestones; M2–M4 and optimization are not implemented or benchmarked.
 
 ## 1. Build a thin end-to-end system
 

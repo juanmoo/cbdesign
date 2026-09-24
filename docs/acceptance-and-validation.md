@@ -1,6 +1,6 @@
 # Acceptance and validation
 
-These are intended tests and release gates. No test suite has been implemented or run yet.
+M1 implements and runs regression coverage for strict dimensions, half-open geometry, all proper rotations, operation replay, provenance partitioning, ledgers, fixtures, fault injection, CLI output handling, and SVG structure. The list below remains the broader release-gate target; entries covering search, target scoring, batching synthesis, and physical review are deferred to later milestones.
 
 ## 1. Required reference cases
 

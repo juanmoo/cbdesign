@@ -1,0 +1,29 @@
+{
+  "schema_version": "cbdesign-plan/v1",
+  "title": "Synthetic asymmetric board with a reversed row and hidden maple joint",
+  "assumptions": ["Synthetic example, not machine instructions", "Roots are already-prepared finite strips, not rough stock", "Mating faces have been prepared by declared processes", "Glue line is nominally negligible"],
+  "shop": {"manufacturing_increment": 1000, "saw_kerf": 1000, "max_workpiece": [100000,100000,100000], "max_slice_length": 60000},
+  "stock": [
+    {"id":"maple-wide","species":"maple","size":[7000,60000,32000]},
+    {"id":"maple-narrow","species":"maple","size":[3000,60000,32000]},
+    {"id":"walnut","species":"walnut","size":[7000,60000,32000]}
+  ],
+  "operations": [
+    {"kind":"glue","id":"asym-panel-glue","inputs":["maple-wide","maple-narrow","walnut"],"output":"asym-panel","axis":0,"stage":"first","prepared_faces":true,"negligible_glue_line":true},
+    {"kind":"cut","id":"asym-first-slice","input":"asym-panel","outputs":["asym-slice-a","asym-panel-rest"],"axis":1,"retained":20000,"kerf":1000},
+    {"kind":"cut","id":"asym-second-slice","input":"asym-panel-rest","outputs":["asym-slice-b","asym-reserve"],"axis":1,"retained":20000,"kerf":1000,"category":"other_offcuts"},
+    {"kind":"rotate","id":"asym-normal-turn","input":"asym-slice-a","output":"asym-row-normal","perm":[0,2,1],"sign":[1,1,-1]},
+    {"kind":"rotate","id":"asym-reverse-turn","input":"asym-slice-b","output":"asym-row-reversed","perm":[0,2,1],"sign":[-1,1,1]},
+    {"kind":"glue","id":"asym-final-glue","inputs":["asym-row-normal","asym-row-reversed"],"output":"asym-rough-board","axis":1,"stage":"final","prepared_faces":true,"negligible_glue_line":true},
+    {"kind":"surface","id":"asym-final-flatten","input":"asym-rough-board","output":"asym-flattened","removed":"asym-final-milling","axis":2,"side":"max","amount":2000,"category":"milling","process":"wide_belt_sander"},
+    {"kind":"cut","id":"asym-edge-trim","input":"asym-flattened","outputs":["asym-finished","asym-edge-offcut"],"axis":0,"retained":15000,"kerf":1000,"tool":"saw","category":"trim"}
+  ],
+  "finishing":{"terminal":"asym-finished","method":"wide_belt_sander","end_grain_supported":true},
+  "dispositions":[
+    {"part":"asym-reserve","category":"other_offcuts","reusable":true},
+    {"part":"asym-final-milling","category":"milling","reusable":false},
+    {"part":"asym-edge-offcut","category":"trim","reusable":false}
+  ],
+  "expected_final_size":[15000,64000,18000],
+  "template":{"recipes":[{"id":"m-m-w","sequence":["maple","maple","walnut"]}],"rows":[{"rotated_part":"asym-row-normal","recipe":"m-m-w"},{"rotated_part":"asym-row-reversed","recipe":"m-m-w","reversed":true}]}
+}
