@@ -17,6 +17,10 @@ class Micrometres(int):
             return cls(value)
         return core_schema.no_info_plain_validator_function(validate)
 
+    @classmethod
+    def __get_pydantic_json_schema__(cls, core_schema, handler):
+        return {"type": "integer", "exclusiveMinimum": 0, "description": "positive micrometres"}
+
 
 def require_increment(value: int, increment: int, label: str) -> None:
     if increment <= 0:

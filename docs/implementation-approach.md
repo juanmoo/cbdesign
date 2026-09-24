@@ -1,6 +1,6 @@
 # Implementation approach
 
-Status: M1 executable fabrication-model prototype is implemented: strict JSON schema, exact nominal replay, provenance/ledger checks, CLI reports, SVG views, hand-authored fixtures, and regression tests. This document retains the planned architecture for later milestones; M2–M4 and optimization are not implemented or benchmarked.
+Status: M1 executable replay and the N1 rough-stock extension are implemented: strict versioned schemas, exact nominal replay, preparation/profile checks, provenance/ledger checks, CLI reports, SVG views, hand-authored fixtures, regression tests, and CI configuration. This document retains the planned architecture for later milestones; M2–M4 and optimization are not implemented or benchmarked.
 
 The **[implementation roadmap](implementation-roadmap.md)** is the detailed next-work execution plan. It maps the original milestones below to N1 (remaining fabrication foundation), N2 (exact generation), and N3 (approximation), with explicit acceptance gates and future work.
 

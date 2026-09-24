@@ -1,0 +1,987 @@
+{
+  "$defs": {
+    "CutProfileV2": {
+      "additionalProperties": false,
+      "properties": {
+        "kerf": {
+          "description": "positive micrometres",
+          "exclusiveMinimum": 0,
+          "title": "Kerf",
+          "type": "integer"
+        },
+        "min_input": {
+          "items": {
+            "description": "positive micrometres",
+            "exclusiveMinimum": 0,
+            "type": "integer"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "title": "Min Input",
+          "type": "array"
+        },
+        "max_input": {
+          "items": {
+            "description": "positive micrometres",
+            "exclusiveMinimum": 0,
+            "type": "integer"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "title": "Max Input",
+          "type": "array"
+        }
+      },
+      "required": [
+        "kerf",
+        "min_input",
+        "max_input"
+      ],
+      "title": "CutProfileV2",
+      "type": "object"
+    },
+    "CutV2": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "cut",
+          "title": "Kind",
+          "type": "string"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "input": {
+          "title": "Input",
+          "type": "string"
+        },
+        "outputs": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "title": "Outputs",
+          "type": "array"
+        },
+        "axis": {
+          "enum": [
+            0,
+            1,
+            2
+          ],
+          "title": "Axis",
+          "type": "integer"
+        },
+        "retained": {
+          "description": "positive micrometres",
+          "exclusiveMinimum": 0,
+          "title": "Retained",
+          "type": "integer"
+        },
+        "kerf": {
+          "description": "positive micrometres",
+          "exclusiveMinimum": 0,
+          "title": "Kerf",
+          "type": "integer"
+        },
+        "tool": {
+          "default": "saw",
+          "title": "Tool",
+          "type": "string"
+        },
+        "category": {
+          "default": "other_offcuts",
+          "enum": [
+            "trim",
+            "other_offcuts"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "retained_side": {
+          "enum": [
+            "min",
+            "max"
+          ],
+          "title": "Retained Side",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "input",
+        "outputs",
+        "axis",
+        "retained",
+        "kerf",
+        "retained_side"
+      ],
+      "title": "CutV2",
+      "type": "object"
+    },
+    "CuttingProfileV2": {
+      "additionalProperties": false,
+      "properties": {
+        "separation": {
+          "$ref": "#/$defs/CutProfileV2"
+        },
+        "preparation": {
+          "$ref": "#/$defs/CutProfileV2"
+        },
+        "slicing": {
+          "$ref": "#/$defs/CutProfileV2"
+        },
+        "final_trim": {
+          "$ref": "#/$defs/CutProfileV2"
+        },
+        "minimum_rip_width": {
+          "description": "positive micrometres",
+          "exclusiveMinimum": 0,
+          "title": "Minimum Rip Width",
+          "type": "integer"
+        },
+        "slice_min": {
+          "description": "positive micrometres",
+          "exclusiveMinimum": 0,
+          "title": "Slice Min",
+          "type": "integer"
+        },
+        "slice_max": {
+          "description": "positive micrometres",
+          "exclusiveMinimum": 0,
+          "title": "Slice Max",
+          "type": "integer"
+        },
+        "slicing_reserve": {
+          "description": "positive micrometres",
+          "exclusiveMinimum": 0,
+          "title": "Slicing Reserve",
+          "type": "integer"
+        },
+        "new_face_jointing": {
+          "description": "positive micrometres",
+          "exclusiveMinimum": 0,
+          "title": "New Face Jointing",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "separation",
+        "preparation",
+        "slicing",
+        "final_trim",
+        "minimum_rip_width",
+        "slice_min",
+        "slice_max",
+        "slicing_reserve",
+        "new_face_jointing"
+      ],
+      "title": "CuttingProfileV2",
+      "type": "object"
+    },
+    "Disposition": {
+      "additionalProperties": false,
+      "properties": {
+        "part": {
+          "title": "Part",
+          "type": "string"
+        },
+        "category": {
+          "enum": [
+            "kerf",
+            "milling",
+            "trim",
+            "other_offcuts"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "reusable": {
+          "default": false,
+          "title": "Reusable",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "part",
+        "category"
+      ],
+      "title": "Disposition",
+      "type": "object"
+    },
+    "Finishing": {
+      "additionalProperties": false,
+      "properties": {
+        "terminal": {
+          "title": "Terminal",
+          "type": "string"
+        },
+        "method": {
+          "enum": [
+            "drum_sander",
+            "wide_belt_sander",
+            "router_sled",
+            "cnc_surfacer"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "end_grain_supported": {
+          "const": true,
+          "title": "End Grain Supported",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "terminal",
+        "method",
+        "end_grain_supported"
+      ],
+      "title": "Finishing",
+      "type": "object"
+    },
+    "Glue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "glue",
+          "title": "Kind",
+          "type": "string"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "inputs": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 2,
+          "title": "Inputs",
+          "type": "array"
+        },
+        "output": {
+          "title": "Output",
+          "type": "string"
+        },
+        "axis": {
+          "enum": [
+            0,
+            1,
+            2
+          ],
+          "title": "Axis",
+          "type": "integer"
+        },
+        "stage": {
+          "enum": [
+            "first",
+            "final"
+          ],
+          "title": "Stage",
+          "type": "string"
+        },
+        "prepared_faces": {
+          "title": "Prepared Faces",
+          "type": "boolean"
+        },
+        "negligible_glue_line": {
+          "const": true,
+          "title": "Negligible Glue Line",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "inputs",
+        "output",
+        "axis",
+        "stage",
+        "prepared_faces",
+        "negligible_glue_line"
+      ],
+      "title": "Glue",
+      "type": "object"
+    },
+    "GridV2": {
+      "additionalProperties": false,
+      "properties": {
+        "pitch": {
+          "description": "positive micrometres",
+          "exclusiveMinimum": 0,
+          "title": "Pitch",
+          "type": "integer"
+        },
+        "columns": {
+          "minimum": 1,
+          "title": "Columns",
+          "type": "integer"
+        },
+        "strip_thickness": {
+          "description": "positive micrometres",
+          "exclusiveMinimum": 0,
+          "title": "Strip Thickness",
+          "type": "integer"
+        },
+        "panel_thickness": {
+          "description": "positive micrometres",
+          "exclusiveMinimum": 0,
+          "title": "Panel Thickness",
+          "type": "integer"
+        },
+        "slice_length": {
+          "description": "positive micrometres",
+          "exclusiveMinimum": 0,
+          "title": "Slice Length",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "pitch",
+        "columns",
+        "strip_thickness",
+        "panel_thickness",
+        "slice_length"
+      ],
+      "title": "GridV2",
+      "type": "object"
+    },
+    "PanelV2": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "part": {
+          "minLength": 1,
+          "title": "Part",
+          "type": "string"
+        },
+        "recipe": {
+          "minLength": 1,
+          "title": "Recipe",
+          "type": "string"
+        },
+        "strips": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Strips",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "part",
+        "recipe",
+        "strips"
+      ],
+      "title": "PanelV2",
+      "type": "object"
+    },
+    "PreparationV2": {
+      "additionalProperties": false,
+      "properties": {
+        "x_min": {
+          "description": "nonnegative micrometres",
+          "minimum": 0,
+          "title": "X Min",
+          "type": "integer"
+        },
+        "x_max": {
+          "description": "nonnegative micrometres",
+          "minimum": 0,
+          "title": "X Max",
+          "type": "integer"
+        },
+        "y_min": {
+          "description": "nonnegative micrometres",
+          "minimum": 0,
+          "title": "Y Min",
+          "type": "integer"
+        },
+        "y_max": {
+          "description": "nonnegative micrometres",
+          "minimum": 0,
+          "title": "Y Max",
+          "type": "integer"
+        },
+        "z_min": {
+          "description": "nonnegative micrometres",
+          "minimum": 0,
+          "title": "Z Min",
+          "type": "integer"
+        },
+        "z_max": {
+          "description": "nonnegative micrometres",
+          "minimum": 0,
+          "title": "Z Max",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "x_min",
+        "x_max",
+        "y_min",
+        "y_max",
+        "z_min",
+        "z_max"
+      ],
+      "title": "PreparationV2",
+      "type": "object"
+    },
+    "RecipeV2": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "cells": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Cells",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "cells"
+      ],
+      "title": "RecipeV2",
+      "type": "object"
+    },
+    "Rotate": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "rotate",
+          "title": "Kind",
+          "type": "string"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "input": {
+          "title": "Input",
+          "type": "string"
+        },
+        "output": {
+          "title": "Output",
+          "type": "string"
+        },
+        "perm": {
+          "items": {
+            "enum": [
+              0,
+              1,
+              2
+            ],
+            "type": "integer"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "title": "Perm",
+          "type": "array"
+        },
+        "sign": {
+          "items": {
+            "enum": [
+              -1,
+              1
+            ],
+            "type": "integer"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "title": "Sign",
+          "type": "array"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "input",
+        "output",
+        "perm",
+        "sign"
+      ],
+      "title": "Rotate",
+      "type": "object"
+    },
+    "RowV2": {
+      "additionalProperties": false,
+      "properties": {
+        "rotated_part": {
+          "minLength": 1,
+          "title": "Rotated Part",
+          "type": "string"
+        },
+        "panel": {
+          "minLength": 1,
+          "title": "Panel",
+          "type": "string"
+        },
+        "recipe": {
+          "minLength": 1,
+          "title": "Recipe",
+          "type": "string"
+        },
+        "reversed": {
+          "default": false,
+          "title": "Reversed",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "rotated_part",
+        "panel",
+        "recipe"
+      ],
+      "title": "RowV2",
+      "type": "object"
+    },
+    "ShopV2": {
+      "additionalProperties": false,
+      "properties": {
+        "max_workpiece": {
+          "items": {
+            "description": "positive micrometres",
+            "exclusiveMinimum": 0,
+            "type": "integer"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "title": "Max Workpiece",
+          "type": "array"
+        },
+        "manufacturing_increment": {
+          "description": "positive micrometres",
+          "exclusiveMinimum": 0,
+          "title": "Manufacturing Increment",
+          "type": "integer"
+        },
+        "cutting": {
+          "$ref": "#/$defs/CuttingProfileV2"
+        },
+        "surfacing": {
+          "items": {
+            "$ref": "#/$defs/SurfacingProfileV2"
+          },
+          "minItems": 1,
+          "title": "Surfacing",
+          "type": "array"
+        }
+      },
+      "required": [
+        "max_workpiece",
+        "manufacturing_increment",
+        "cutting",
+        "surfacing"
+      ],
+      "title": "ShopV2",
+      "type": "object"
+    },
+    "SourceSegmentV2": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "stock_type": {
+          "minLength": 1,
+          "title": "Stock Type",
+          "type": "string"
+        },
+        "length": {
+          "description": "positive micrometres",
+          "exclusiveMinimum": 0,
+          "title": "Length",
+          "type": "integer"
+        },
+        "boundary": {
+          "const": "allocated_window",
+          "title": "Boundary",
+          "type": "string"
+        },
+        "separation_operation": {
+          "minLength": 1,
+          "title": "Separation Operation",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "stock_type",
+        "length",
+        "boundary",
+        "separation_operation"
+      ],
+      "title": "SourceSegmentV2",
+      "type": "object"
+    },
+    "StockTypeV2": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "species": {
+          "minLength": 1,
+          "title": "Species",
+          "type": "string"
+        },
+        "width": {
+          "description": "positive micrometres",
+          "exclusiveMinimum": 0,
+          "title": "Width",
+          "type": "integer"
+        },
+        "thickness": {
+          "description": "positive micrometres",
+          "exclusiveMinimum": 0,
+          "title": "Thickness",
+          "type": "integer"
+        },
+        "grain": {
+          "items": {
+            "enum": [
+              0,
+              1
+            ],
+            "type": "integer"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "title": "Grain",
+          "type": "array"
+        },
+        "preparation": {
+          "$ref": "#/$defs/PreparationV2"
+        }
+      },
+      "required": [
+        "id",
+        "species",
+        "width",
+        "thickness",
+        "grain",
+        "preparation"
+      ],
+      "title": "StockTypeV2",
+      "type": "object"
+    },
+    "Surface": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "surface",
+          "title": "Kind",
+          "type": "string"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "input": {
+          "title": "Input",
+          "type": "string"
+        },
+        "output": {
+          "title": "Output",
+          "type": "string"
+        },
+        "removed": {
+          "title": "Removed",
+          "type": "string"
+        },
+        "axis": {
+          "enum": [
+            0,
+            1,
+            2
+          ],
+          "title": "Axis",
+          "type": "integer"
+        },
+        "side": {
+          "enum": [
+            "min",
+            "max"
+          ],
+          "title": "Side",
+          "type": "string"
+        },
+        "amount": {
+          "description": "positive micrometres",
+          "exclusiveMinimum": 0,
+          "title": "Amount",
+          "type": "integer"
+        },
+        "category": {
+          "default": "milling",
+          "enum": [
+            "milling",
+            "trim",
+            "other_offcuts"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "process": {
+          "title": "Process",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "input",
+        "output",
+        "removed",
+        "axis",
+        "side",
+        "amount",
+        "process"
+      ],
+      "title": "Surface",
+      "type": "object"
+    },
+    "SurfacingProfileV2": {
+      "additionalProperties": false,
+      "properties": {
+        "process": {
+          "enum": [
+            "jointer",
+            "thickness_planer",
+            "drum_sander",
+            "wide_belt_sander",
+            "router_sled",
+            "cnc_surfacer"
+          ],
+          "title": "Process",
+          "type": "string"
+        },
+        "axes": {
+          "items": {
+            "enum": [
+              0,
+              1,
+              2
+            ],
+            "type": "integer"
+          },
+          "maxItems": 3,
+          "minItems": 1,
+          "title": "Axes",
+          "type": "array"
+        },
+        "min_input": {
+          "items": {
+            "description": "positive micrometres",
+            "exclusiveMinimum": 0,
+            "type": "integer"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "title": "Min Input",
+          "type": "array"
+        },
+        "max_input": {
+          "items": {
+            "description": "positive micrometres",
+            "exclusiveMinimum": 0,
+            "type": "integer"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "title": "Max Input",
+          "type": "array"
+        },
+        "glue_ready": {
+          "title": "Glue Ready",
+          "type": "boolean"
+        },
+        "end_grain_supported": {
+          "title": "End Grain Supported",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "process",
+        "axes",
+        "min_input",
+        "max_input",
+        "glue_ready",
+        "end_grain_supported"
+      ],
+      "title": "SurfacingProfileV2",
+      "type": "object"
+    },
+    "TemplateV2": {
+      "additionalProperties": false,
+      "properties": {
+        "recipes": {
+          "items": {
+            "$ref": "#/$defs/RecipeV2"
+          },
+          "minItems": 1,
+          "title": "Recipes",
+          "type": "array"
+        },
+        "panels": {
+          "items": {
+            "$ref": "#/$defs/PanelV2"
+          },
+          "minItems": 1,
+          "title": "Panels",
+          "type": "array"
+        },
+        "rows": {
+          "items": {
+            "$ref": "#/$defs/RowV2"
+          },
+          "minItems": 2,
+          "title": "Rows",
+          "type": "array"
+        }
+      },
+      "required": [
+        "recipes",
+        "panels",
+        "rows"
+      ],
+      "title": "TemplateV2",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "cbdesign-plan/v2",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "title": {
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+    },
+    "assumptions": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Assumptions",
+      "type": "array"
+    },
+    "shop": {
+      "$ref": "#/$defs/ShopV2"
+    },
+    "stock_types": {
+      "items": {
+        "$ref": "#/$defs/StockTypeV2"
+      },
+      "maxItems": 2,
+      "minItems": 2,
+      "title": "Stock Types",
+      "type": "array"
+    },
+    "source_segments": {
+      "items": {
+        "$ref": "#/$defs/SourceSegmentV2"
+      },
+      "minItems": 1,
+      "title": "Source Segments",
+      "type": "array"
+    },
+    "grid": {
+      "$ref": "#/$defs/GridV2"
+    },
+    "template": {
+      "$ref": "#/$defs/TemplateV2"
+    },
+    "operations": {
+      "items": {
+        "discriminator": {
+          "mapping": {
+            "cut": "#/$defs/CutV2",
+            "glue": "#/$defs/Glue",
+            "rotate": "#/$defs/Rotate",
+            "surface": "#/$defs/Surface"
+          },
+          "propertyName": "kind"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/$defs/CutV2"
+          },
+          {
+            "$ref": "#/$defs/Surface"
+          },
+          {
+            "$ref": "#/$defs/Rotate"
+          },
+          {
+            "$ref": "#/$defs/Glue"
+          }
+        ]
+      },
+      "minItems": 1,
+      "title": "Operations",
+      "type": "array"
+    },
+    "finishing": {
+      "$ref": "#/$defs/Finishing"
+    },
+    "dispositions": {
+      "items": {
+        "$ref": "#/$defs/Disposition"
+      },
+      "title": "Dispositions",
+      "type": "array"
+    },
+    "expected_final_size": {
+      "items": {
+        "description": "positive micrometres",
+        "exclusiveMinimum": 0,
+        "type": "integer"
+      },
+      "maxItems": 3,
+      "minItems": 3,
+      "title": "Expected Final Size",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "title",
+    "assumptions",
+    "shop",
+    "stock_types",
+    "source_segments",
+    "grid",
+    "template",
+    "operations",
+    "finishing",
+    "dispositions",
+    "expected_final_size"
+  ],
+  "title": "PlanV2",
+  "type": "object"
+}

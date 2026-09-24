@@ -1,4 +1,11 @@
-# M1 plan format and operation semantics
+# Versioned plan formats
+
+Use `load_plan(obj)` to dispatch an explicit schema version. `Plan.from_json_obj(obj)` remains the legacy v1 entrypoint; it does not migrate rough stock or invent profile defaults.
+
+- **V1:** prepared finite strips, with the narrower M1 validation coverage documented below.
+- **V2:** finite rough-stock segments, complete required manufacturing profiles, operation-derived preparation, visual grid recipes and physical panel assignments. See the [v2 contract](decisions/0002-rough-stock-contract.md), [JSON Schema](plan-v2.schema.json), and [rough-stock example](../examples/rough-stock-board.json).
+
+## V1 operation semantics
 
 `cbdesign-plan/v1` is a strict JSON document. Every dimension is a positive **integer micrometre** value; JSON booleans and floats are invalid. It is a nominal-only replay format, not a machining program or safety certification.
 
@@ -21,7 +28,7 @@ Every other live terminal, including untouched stock and removal parts, needs ex
 
 ## Construction template
 
-M1 accepts only the restricted two-stage construction: at least one first-stage strip glue, exactly one final row glue, intact rotated rows in that final glue, and no unaccounted terminals. Optional recipe/row metadata is checked against the final glue's inputs. The final top must have source grain normal to it (end grain).
+M1 accepts only the restricted two-stage construction: at least one first-stage strip glue, exactly one final row glue, intact rotated rows in that final glue, and no unaccounted terminals. Recipe/row metadata must bijectively cover the final glue's inputs. The v1 parser retains historical empty defaults, but replay rejects missing row assignments. The final top must have source grain normal to it (end grain).
 
 ## Status
 

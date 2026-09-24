@@ -128,3 +128,17 @@ class Plan(StrictModel):
     def from_json_obj(cls, obj: object) -> "Plan":
         # Pydantic's discriminated unions remain strict through model validation.
         return cls.model_validate(obj)
+
+
+def load_plan(obj: object) -> "Plan | object":
+    """Load a plan by its explicit schema version without implicit migration."""
+    if not isinstance(obj, dict):
+        raise ValueError("plan must be a JSON object")
+    version = obj.get("schema_version")
+    if version == "cbdesign-plan/v1":
+        return Plan.from_json_obj(obj)
+    if version == "cbdesign-plan/v2":
+        # Local import avoids a module cycle: V2 intentionally reuses V1 primitives.
+        from .models_v2 import PlanV2
+        return PlanV2.from_json_obj(obj)
+    raise ValueError(f"unsupported schema_version: {version!r}")

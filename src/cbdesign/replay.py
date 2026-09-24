@@ -21,6 +21,8 @@ class Region:
     source: Box
     current: Box
     grain: tuple[int, int, int]
+    axis_map: tuple[int, int, int] = (0, 1, 2)
+    axis_sign: tuple[int, int, int] = (1, 1, 1)
 
     @property
     def volume(self): return self.current.volume
@@ -47,13 +49,9 @@ def clip_regions(regions: tuple[Region, ...], box: Box, normalise_to: tuple[int,
         # by extents. Cuts after rotation therefore retain source-coordinate provenance.
         src_origin = list(region.source.origin); src_size = [0, 0, 0]
         for cur_axis in range(3):
-            # Find source axis that maps to cur_axis from grain-independent bounding mapping.
-            # Region source/current dimensions identify it uniquely for actual operation paths.
-            matches = [i for i in range(3) if region.source.size[i] == region.current.size[cur_axis]]
-            # Repeated dimensions make identity ambiguous; current/source volume provenance is
-            # still clipped below via a stored axis map added by rotations. Defaults identity.
-            source_axis = region.axis_map[cur_axis] if hasattr(region, "axis_map") else cur_axis
-            sign = region.axis_sign[cur_axis] if hasattr(region, "axis_sign") else 1
+            # Explicit orientation also disambiguates repeated or equal dimensions.
+            source_axis = region.axis_map[cur_axis]
+            sign = region.axis_sign[cur_axis]
             delta = hit.origin[cur_axis] - region.current.origin[cur_axis]
             if sign > 0:
                 src_origin[source_axis] += delta
@@ -69,10 +67,7 @@ def clip_regions(regions: tuple[Region, ...], box: Box, normalise_to: tuple[int,
 
 
 def _region(source_id, species, source, current, grain, axis_map=(0,1,2), axis_sign=(1,1,1)):
-    r = Region(source_id, species, source, current, grain)
-    object.__setattr__(r, "axis_map", axis_map)
-    object.__setattr__(r, "axis_sign", axis_sign)
-    return r
+    return Region(source_id, species, source, current, grain, axis_map, axis_sign)
 
 
 def transformed_region(region: Region, rotation: Rotation, old_size: tuple[int,int,int]) -> Region:
@@ -112,10 +107,6 @@ class Replay:
 
     def ledger(self):
         initial = Counter(); finished = Counter(); categories = defaultdict(Counter)
-        for part in self.parts.values():
-            for r in part.regions:
-                # Roots have history empty; only calculate initial uniquely by source boxes.
-                pass
         for source, size in self.source_sizes.items():
             initial[self.source_species[source]] += size[0] * size[1] * size[2]
         final = self.parts[self.terminal]
@@ -129,7 +120,7 @@ class Replay:
 
 def preflight(plan: Plan):
     species = {stock.species for stock in plan.stock}
-    if len(species) != 2:
+    if plan.schema_version == "cbdesign-plan/v1" and len(species) != 2:
         raise ReplayError("two_species_scope", "M1 requires exactly two distinct stock species", expected=2, actual=len(species))
     seen = {s.id for s in plan.stock}; produced = set(seen); consumed = set()
     removal_outputs: set[str] = set()
@@ -144,6 +135,8 @@ def preflight(plan: Plan):
             if item in removal_outputs: raise ReplayError("consumed_removal_output", "surface-removal outputs are terminal losses and may not be consumed", op.id, item)
             if item in consumed: raise ReplayError("multiple_consumers", "input part may be consumed once", op.id, item)
         if len(inputs) != len(set(inputs)): raise ReplayError("repeated_glue_input", "glue input cannot repeat", op.id)
+        if len(outputs) != len(set(outputs)):
+            raise ReplayError("duplicate_part_id", "operation outputs must have distinct IDs", op.id)
         for item in outputs:
             if item in produced: raise ReplayError("duplicate_part_id", "part ID is globally unique", op.id, item)
         if isinstance(op, Surface):
@@ -159,9 +152,15 @@ def replay(plan: Plan) -> Replay:
         size = tuple(map(int, stock.size)); box = Box((0,0,0), size)
         parts[stock.id] = Part(stock.id, size, (_region(stock.id, stock.species, box, box, (0,1,0)),))
         source_sizes[stock.id] = size; source_species[stock.id] = stock.species
+    state = None
+    if plan.schema_version == "cbdesign-plan/v2":
+        from .construction_v2 import V2State
+        state = V2State(plan, parts)
     losses: dict[str, list[Region]] = defaultdict(list); joints=[]; log=[]; row_sequences={}; first_glue_panels={}; terminal_origins={}
     for op in plan.operations:
         try:
+            if state is not None:
+                state.before(op, parts)
             # Capacity is evaluated at the actual operation stage, including roots later consumed.
             if plan.shop.max_workpiece is not None:
                 maximum = tuple(map(int, plan.shop.max_workpiece))
@@ -173,7 +172,13 @@ def replay(plan: Plan) -> Replay:
             if isinstance(op, Cut) and plan.shop.max_slice_length is not None and op.axis == 1 and int(op.retained) > int(plan.shop.max_slice_length):
                 raise ReplayError("slice_stage_limit", "commanded retained slice exceeds configured slice-stage limit", op.id, expected=int(plan.shop.max_slice_length), actual=int(op.retained))
             if isinstance(op, Cut):
-                p = parts.pop(op.input); a, k, b = Box((0,0,0), p.size).cut(op.axis, int(op.retained), int(op.kerf))
+                p = parts.pop(op.input)
+                retained = int(op.retained)
+                retain_max = getattr(op, "retained_side", "min") == "max"
+                position = p.size[op.axis] - retained - int(op.kerf) if retain_max else retained
+                a, k, b = Box((0,0,0), p.size).cut(op.axis, position, int(op.kerf))
+                if retain_max:
+                    a, b = b, a
                 parts[op.outputs[0]] = Part(op.outputs[0], a.size, clip_regions(p.regions, a, a.origin), p.history + (op.id,))
                 parts[op.outputs[1]] = Part(op.outputs[1], b.size, clip_regions(p.regions, b, b.origin), p.history + (op.id,))
                 terminal_origins[op.outputs[1]] = op.category
@@ -206,6 +211,10 @@ def replay(plan: Plan) -> Replay:
                     first_glue_panels[op.output] = parts[op.output]
                 for left,right in zip(ps,ps[1:]): joints.append({"operation":op.id,"stage":op.stage,"axis":op.axis,"area":left.size[(op.axis+1)%3]*left.size[(op.axis+2)%3],"left":left.id,"right":right.id})
                 log.append({"id":op.id,"kind":"glue","inputs":list(op.inputs),"outputs":[op.output],"input_sizes_um":{p.id:list(p.size) for p in ps},"output_sizes_um":{op.output:list(base)},"axis":op.axis,"stage":op.stage,"joint_count":len(ps)-1,"prepared_faces":op.prepared_faces,"negligible_glue_line":op.negligible_glue_line})
+            if state is not None:
+                if isinstance(op, Cut):
+                    log[-1]["retained_side"] = op.retained_side
+                state.after(op, parts)
         except ReplayError: raise
         except ValueError as e: raise ReplayError("invalid_operation_geometry",str(e),op.id) from e
     if plan.finishing.terminal not in parts: raise ReplayError("missing_terminal","finishing terminal does not exist",part=plan.finishing.terminal)
@@ -233,7 +242,8 @@ def replay(plan: Plan) -> Replay:
             raise ReplayError("disposition_category_mismatch", "terminal disposition cannot reclassify operation-derived material", part=pid, expected=expected_category, actual=d.category)
         losses[expected_category].extend(parts[pid].regions)
     rep=Replay(parts,terminal,losses,joints,log,source_sizes,source_species,row_sequences,first_glue_panels)
-    _validate(rep,plan)
+    final_glue = state.finish(rep) if state is not None else None
+    _validate(rep, plan, final_glue)
     return rep
 
 
@@ -316,8 +326,9 @@ def _validate_final_finishing_path(plan: Plan, final_glue: Glue) -> None:
         raise ReplayError("missing_end_grain_finishing", "finished terminal requires explicit final Z-axis end-grain removal", part=plan.finishing.terminal)
 
 
-def _validate(rep: Replay, plan: Plan):
-    final_glue = _validate_construction_lineage(plan)
+def _validate(rep: Replay, plan: Plan, final_glue: Glue | None = None):
+    if final_glue is None:
+        final_glue = _validate_construction_lineage(plan)
     _validate_final_finishing_path(plan, final_glue)
     final=rep.parts[rep.terminal]
     if final.size != tuple(map(int,plan.expected_final_size)): raise ReplayError("final_dimension_mismatch","replayed final dimensions do not match declaration",part=final.id,expected=list(plan.expected_final_size),actual=list(final.size))
@@ -349,9 +360,10 @@ def _validate(rep: Replay, plan: Plan):
             for right in pieces[i + 1:]:
                 if left.intersect(right) is not None:
                     raise ReplayError("source_partition_failure", "source-coordinate terminal pieces overlap", part=source_id)
+    if plan.schema_version == "cbdesign-plan/v2":
+        return  # V2State independently checked physical panels, cells and row bijection.
     first=sum(1 for j in rep.joints if j["stage"]=="first"); finalj=sum(1 for j in rep.joints if j["stage"]=="final")
     if not first or not finalj: raise ReplayError("construction_template","two glue stages are required")
-    if any(isinstance(o,Glue) and o.stage=="first" for o in plan.operations if False): pass
     # Final-glue successor semantics are enforced precisely by _validate_final_finishing_path,
     # including retained explicit trim cuts and excluding surface removed outputs.
     final_glues=[o for o in plan.operations if isinstance(o,Glue) and o.stage=="final"]

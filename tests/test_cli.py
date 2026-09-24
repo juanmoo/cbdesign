@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+import pytest
 from cbdesign.cli import main
 
 ROOT=Path(__file__).parents[1]
@@ -38,6 +39,32 @@ def test_cli_rejects_symlink_collisions_and_input_overlap(tmp_path):
     assert (out/'board.svg').is_symlink()
     plan=tmp_path/'plan.json'; plan.write_text((ROOT/'examples/checkerboard.json').read_text())
     assert main(['validate',str(plan),'--output',str(tmp_path),'--overwrite'])==2
+
+@pytest.mark.parametrize('name', ['stock.svg', 'board.svg', 'validation.json'])
+@pytest.mark.parametrize('collision', ['directory', 'symlink', 'dangling_symlink'])
+def test_all_generated_collisions_are_rejected_without_modifying_outputs(tmp_path, name, collision):
+    out = tmp_path / 'reports'; out.mkdir()
+    keep = out / 'operations.txt'; keep.write_text('existing report')
+    target = out / name
+    if collision == 'directory':
+        target.mkdir()
+    elif collision == 'symlink':
+        target.symlink_to(ROOT / 'README.md')
+    else:
+        target.symlink_to(tmp_path / 'missing-target')
+    assert main(['validate', str(ROOT / 'examples/checkerboard.json'), '--output', str(out), '--overwrite']) == 2
+    assert keep.read_text() == 'existing report'
+    assert not (tmp_path / 'missing-target').exists()
+
+
+def test_cli_v2_schema_dispatch_and_stock_output(tmp_path):
+    out = tmp_path / 'v2'
+    assert main(['validate', str(ROOT / 'examples/rough-stock-board.json'), '--output', str(out)]) == 0
+    report = json.loads((out / 'validation.json').read_text())
+    assert report['final']['size_um'] == [290000, 290000, 30000]
+    assert 'rough_stock_preparation_allowances' in report['coverage']['passed']
+    assert '<svg' in (out / 'stock.svg').read_text()
+
 
 def test_cli_malformed_file(tmp_path):
     p=tmp_path/'bad.json'; p.write_text('{invalid')

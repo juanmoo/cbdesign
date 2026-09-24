@@ -4,11 +4,11 @@ import json
 import os
 from pathlib import Path
 from pydantic import ValidationError
-from .models import Plan
+from .models import load_plan
 from .validation import validate
-from .render_svg import board_svg, panels_svg
+from .render_svg import board_svg, panels_svg, stock_svg
 
-GENERATED_FILES = frozenset({"validation.json", "material-ledger.json", "board.svg", "panels.svg", "operations.txt"})
+GENERATED_FILES = frozenset({"validation.json", "material-ledger.json", "board.svg", "panels.svg", "stock.svg", "operations.txt"})
 
 
 def _safe_output_directory(plan_path: Path, output: Path, overwrite: bool) -> tuple[bool, str | None]:
@@ -17,14 +17,16 @@ def _safe_output_directory(plan_path: Path, output: Path, overwrite: bool) -> tu
     output_resolved = output.resolve(strict=False)
     if output_resolved == plan_resolved or output_resolved in plan_resolved.parents:
         return False, "output directory must not be the plan file or an ancestor containing it"
+    if output.is_symlink():
+        return False, "output path must be a real directory, not a file or symlink"
     if output.exists():
-        if output.is_symlink() or not output.is_dir():
+        if not output.is_dir():
             return False, "output path must be a real directory, not a file or symlink"
         if not overwrite:
             return False, "refusing to replace existing output; use --overwrite to replace only cbdesign-generated files"
         for name in GENERATED_FILES:
             candidate = output / name
-            if candidate.exists() and (candidate.is_symlink() or not candidate.is_file()):
+            if candidate.is_symlink() or (candidate.exists() and not candidate.is_file()):
                 return False, f"refusing to replace colliding generated name {name!r}: it is not a regular file"
     return True, None
 
@@ -48,7 +50,7 @@ def main(argv=None) -> int:
     args = parser.parse_args(argv)
     try:
         raw = json.loads(args.plan.read_text())
-        plan = Plan.from_json_obj(raw)
+        plan = load_plan(raw)
     except (OSError, json.JSONDecodeError, ValidationError, ValueError) as error:
         print(json.dumps({"status": "invalid_schema", "error": str(error), "output": "No output artifacts were modified."}, indent=2))
         return 2
@@ -73,6 +75,7 @@ def main(argv=None) -> int:
     (output / "material-ledger.json").write_text(json.dumps(result.ledger(), indent=2, sort_keys=True) + "\n")
     (output / "board.svg").write_text(board_svg(result))
     (output / "panels.svg").write_text(panels_svg(result))
+    (output / "stock.svg").write_text(stock_svg(result))
     (output / "operations.txt").write_text(_operations_text(result.operations))
     print(json.dumps(report, indent=2, sort_keys=True))
     return 0

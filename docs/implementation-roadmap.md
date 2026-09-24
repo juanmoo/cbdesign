@@ -1,6 +1,6 @@
 # Implementation roadmap
 
-Status: proposed execution plan, not a claim of implemented functionality.
+Status: N1 nominal rough-stock implementation added locally; N2, N3 and future milestones remain planned. The work packages below retain their acceptance criteria. CI is configured for Python 3.12/3.13; remote CI and physical shop review are not claimed.
 
 Baseline: `5ae7bb4` (nominal replay prototype).
 
@@ -36,7 +36,13 @@ N1–N3 remain **nominal-only** until the separate bounded-tolerance milestone i
 
 See [problem specification](problem-specification.md), [fabrication model](fabrication-model.md), and [scope decision](decisions/0001-version-zero-scope.md) for the governing requirements.
 
-## 2. Current baseline
+## 2. Baseline and N1 delivery
+
+N1 adds a separate `cbdesign-plan/v2` contract, preserving v1 parsing and its narrower coverage. It includes required fixed stock types and finite segments, operation-derived preparation, stage-specific profiles, visual cells separate from physical strip joints, single-strip panel registration, a board-sized reference, stock/board/panel diagrams, reproducible previews and a CI workflow. See [decision 0002](decisions/0002-rough-stock-contract.md) and the [reference plan](../examples/rough-stock-board.json).
+
+The reference is 290 × 290 × 30 mm, with 54 explicit saw passes and 28 glue joints. Its exact species ledger and trimmed cell-area layout have independent test goldens. This does not implement uncertainty propagation, physical validation, generation or optimization.
+
+### Historical M1 baseline
 
 Implemented at the baseline commit:
 
@@ -49,7 +55,7 @@ Implemented at the baseline commit:
 - Two tiny prepared-strip fixtures, generated reports, and SVG/PNG previews.
 - 26 passing tests, including focused regressions and basic property tests.
 
-Not yet complete:
+Not complete **at that historical baseline** (the first three items are the N1 additions above):
 
 - Rough-stock-to-strip reference workflow and preparation allowance checks.
 - Minimum handling dimensions and enforced slicing reserves.
@@ -59,7 +65,7 @@ Not yet complete:
 
 The existing checkerboard and asymmetric examples are useful regression fixtures, not evidence of a complete rough-lumber workflow or shop readiness.
 
-Two schema details need particular care in N1: current `Recipe.sequence` is checked against physical material regions, not uniform visual grid cells; and template metadata is described/defaulted as optional although current row-bijection validation requires it. Make these contracts explicit in the next schema rather than treating them as a ready-made grid API. Previously fixed terminal-accounting, row-bijection, capacity, preparation-declaration, and retained-finishing bugs are not being listed as current defects.
+V1 `Recipe.sequence` remains a physical-region sequence, not a visual grid API. V2 uses `RecipeV2.cells` plus independent physical panel/strip declarations. V1 retains historical optional template defaults at parsing, but its row-bijection replay check requires assignments; this is now explicit in the format documentation. Previously fixed terminal-accounting, row-bijection, capacity, preparation-declaration, and retained-finishing bugs are not being listed as current defects.
 
 ## 3. Architecture and implementation rules
 
