@@ -1,6 +1,6 @@
 # Implementation approach
 
-Status: M1 executable replay and the N1 rough-stock extension are implemented: strict versioned schemas, exact nominal replay, preparation/profile checks, provenance/ledger checks, CLI reports, SVG views, hand-authored fixtures, regression tests, and CI configuration. This document retains the planned architecture for later milestones; M2–M4 and optimization are not implemented or benchmarked.
+Status (2026-09-24): the local end-to-end implementation now includes exact generation, canonical panel batching, bounded recipe search, bitmap ingestion/browser projects, dimensional-bound sidecars, and PDF/CSV/JSON/SVG exports. The [current implementation status](implementation-status.md) distinguishes verified behavior from outstanding allocation/optimization and physical gates. The architecture below is the original proposal; the delivered UI uses the Python standard-library HTTP server and plain JavaScript rather than FastAPI/React.
 
 The **[implementation roadmap](implementation-roadmap.md)** is the detailed next-work execution plan. It maps the original milestones below to N1 (remaining fabrication foundation), N2 (exact generation), and N3 (approximation), with explicit acceptance gates and future work.
 

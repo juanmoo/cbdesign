@@ -31,4 +31,22 @@ def difference_svg(replay, target: FrozenTarget, species_mapping: dict[str, str]
     # Blue lays down desired B pixels. Red then marks physical B material; overlapping
     # areas are deliberately dark purple, making agreement and either mismatch visible.
     legend = '<rect x="20" y="508" width="12" height="12" fill="#2d6ea3"/><text x="37" y="519" font-family="sans-serif" font-size="11">target B</text><rect x="115" y="508" width="12" height="12" fill="#d1493f"/><text x="132" y="519" font-family="sans-serif" font-size="11">achieved B; overlap = purple</text>'
-    return _shell(title, f'{target_cells}{actual}<rect x="20" y="20" width="480" height="480" fill="none" stroke="#111"/>{legend}')
+    # Paint agreement explicitly: alpha compositing alone is not purple on all renderers.
+    overlaps = []
+    for region in terminal.regions:
+        if region.species != target_species:
+            continue
+        left, top = region.current.origin[:2]
+        right = left + region.current.size[0]
+        bottom = top + region.current.size[1]
+        for y, row in enumerate(target.rows):
+            y0, y1 = max(top, y * terminal.size[1] / target.height), min(bottom, (y + 1) * terminal.size[1] / target.height)
+            if y1 <= y0:
+                continue
+            for x, value in enumerate(row):
+                if not value:
+                    continue
+                x0, x1 = max(left, x * terminal.size[0] / target.width), min(right, (x + 1) * terminal.size[0] / target.width)
+                if x1 > x0:
+                    overlaps.append(f'<rect x="{pad+x0*sx:.3f}" y="{pad+y0*sy:.3f}" width="{(x1-x0)*sx:.3f}" height="{(y1-y0)*sy:.3f}" fill="#78548b"/>')
+    return _shell(title, f'{target_cells}{actual}{"".join(overlaps)}<rect x="20" y="20" width="480" height="480" fill="none" stroke="#111"/>{legend}')

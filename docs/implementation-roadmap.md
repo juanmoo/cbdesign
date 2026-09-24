@@ -1,6 +1,6 @@
 # Implementation roadmap
 
-Status: N1 nominal rough-stock implementation added locally; N2, N3 and future milestones remain planned. The work packages below retain their acceptance criteria. CI is configured for Python 3.12/3.13; remote CI and physical shop review are not claimed.
+Status (2026-09-24): N1 is published; N2 exact compilation, N3 bounded approximation, local browser/bitmap workflow, dimensional sidecars and exports are implemented on `software-completion`. Python 3.12/3.13 CI passed for checkpoint `b260eef`. See [implementation status](implementation-status.md) for measured verification and remaining gates. The original work packages below remain the broader acceptance criteria, not a claim that every optimization or physical gate is complete.
 
 Baseline: `5ae7bb4` (nominal replay prototype).
 

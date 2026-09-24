@@ -1,0 +1,5067 @@
+{
+  "assumptions": [
+    "N2 exact deterministic compiler",
+    "Nominal micrometre dimensions"
+  ],
+  "dispositions": [
+    {
+      "category": "other_offcuts",
+      "part": "maple-1-reserve",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "maple-1-end-min-off",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "maple-1-end-max-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-1-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-1-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-1-xmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-1-xmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "maple-1-rip-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-1-joint-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "walnut-1-reserve",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "walnut-1-end-min-off",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "walnut-1-end-max-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-1-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-1-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-1-xmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-1-xmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "walnut-1-rip-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-1-joint-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "maple-2-reserve",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "maple-2-end-min-off",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "maple-2-end-max-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-2-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-2-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-2-xmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-2-xmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "maple-2-rip-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-2-joint-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "walnut-2-reserve",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "walnut-2-end-min-off",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "walnut-2-end-max-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-2-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-2-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-2-xmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-2-xmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "walnut-2-rip-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-2-joint-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "maple-3-reserve",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "maple-3-end-min-off",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "maple-3-end-max-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-3-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-3-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-3-xmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-3-xmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "maple-3-rip-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-3-joint-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "walnut-3-reserve",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "walnut-3-end-min-off",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "walnut-3-end-max-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-3-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-3-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-3-xmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-3-xmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "walnut-3-rip-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-3-joint-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "maple-4-reserve",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "maple-4-end-min-off",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "maple-4-end-max-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-4-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-4-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-4-xmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-4-xmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "maple-4-rip-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-4-joint-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "walnut-4-reserve",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "walnut-4-end-min-off",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "walnut-4-end-max-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-4-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-4-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-4-xmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-4-xmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "walnut-4-rip-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-4-joint-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "maple-5-reserve",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "maple-5-end-min-off",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "maple-5-end-max-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-5-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-5-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-5-xmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-5-xmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "maple-5-rip-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-5-joint-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "walnut-5-reserve",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "walnut-5-end-min-off",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "walnut-5-end-max-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-5-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-5-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-5-xmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-5-xmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "walnut-5-rip-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-5-joint-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "maple-6-reserve",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "maple-6-end-min-off",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "maple-6-end-max-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-6-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-6-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-6-xmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-6-xmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "maple-6-rip-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-6-joint-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "walnut-6-reserve",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "walnut-6-end-min-off",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "walnut-6-end-max-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-6-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-6-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-6-xmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-6-xmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "walnut-6-rip-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-6-joint-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "panel-1-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "panel-1-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "panel-1-remainder-5",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "maple-7-reserve",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "maple-7-end-min-off",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "maple-7-end-max-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-7-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-7-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-7-xmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-7-xmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "maple-7-rip-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-7-joint-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "walnut-7-reserve",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "walnut-7-end-min-off",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "walnut-7-end-max-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-7-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-7-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-7-xmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-7-xmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "walnut-7-rip-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-7-joint-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "maple-8-reserve",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "maple-8-end-min-off",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "maple-8-end-max-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-8-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-8-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-8-xmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-8-xmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "maple-8-rip-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-8-joint-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "walnut-8-reserve",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "walnut-8-end-min-off",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "walnut-8-end-max-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-8-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-8-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-8-xmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-8-xmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "walnut-8-rip-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-8-joint-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "maple-9-reserve",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "maple-9-end-min-off",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "maple-9-end-max-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-9-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-9-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-9-xmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-9-xmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "maple-9-rip-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-9-joint-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "walnut-9-reserve",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "walnut-9-end-min-off",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "walnut-9-end-max-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-9-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-9-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-9-xmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-9-xmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "walnut-9-rip-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-9-joint-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "maple-10-reserve",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "maple-10-end-min-off",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "maple-10-end-max-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-10-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-10-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-10-xmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-10-xmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "maple-10-rip-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-10-joint-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "walnut-10-reserve",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "walnut-10-end-min-off",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "walnut-10-end-max-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-10-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-10-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-10-xmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-10-xmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "walnut-10-rip-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-10-joint-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "maple-11-reserve",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "maple-11-end-min-off",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "maple-11-end-max-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-11-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-11-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-11-xmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-11-xmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "maple-11-rip-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-11-joint-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "walnut-11-reserve",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "walnut-11-end-min-off",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "walnut-11-end-max-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-11-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-11-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-11-xmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-11-xmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "walnut-11-rip-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-11-joint-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "maple-12-reserve",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "maple-12-end-min-off",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "maple-12-end-max-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-12-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-12-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-12-xmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-12-xmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "maple-12-rip-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "maple-12-joint-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "walnut-12-reserve",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "walnut-12-end-min-off",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "walnut-12-end-max-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-12-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-12-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-12-xmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-12-xmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "walnut-12-rip-off",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "walnut-12-joint-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "panel-2-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "panel-2-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "other_offcuts",
+      "part": "panel-2-remainder-5",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "final-zmin-loss",
+      "reusable": false
+    },
+    {
+      "category": "milling",
+      "part": "final-zmax-loss",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "final-x-off",
+      "reusable": false
+    },
+    {
+      "category": "trim",
+      "part": "final-y-off",
+      "reusable": false
+    }
+  ],
+  "expected_final_size": [
+    290000,
+    290000,
+    30000
+  ],
+  "finishing": {
+    "end_grain_supported": true,
+    "method": "drum_sander",
+    "terminal": "finished"
+  },
+  "grid": {
+    "columns": 12,
+    "panel_thickness": 25000,
+    "pitch": 25000,
+    "slice_length": 32000,
+    "strip_thickness": 27000
+  },
+  "operations": [
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "maple-1-separate",
+      "input": "maple-1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-1-window",
+        "maple-1-reserve"
+      ],
+      "retained": 395000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "maple-1-end-min",
+      "input": "maple-1-window",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-1-end1",
+        "maple-1-end-min-off"
+      ],
+      "retained": 384000,
+      "retained_side": "max",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "maple-1-end-max",
+      "input": "maple-1-end1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-1-blank",
+        "maple-1-end-max-off"
+      ],
+      "retained": 370000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 3000,
+      "axis": 2,
+      "category": "milling",
+      "id": "maple-1-zmin",
+      "input": "maple-1-blank",
+      "kind": "surface",
+      "output": "maple-1-z1",
+      "process": "thickness_planer",
+      "removed": "maple-1-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 3000,
+      "axis": 2,
+      "category": "milling",
+      "id": "maple-1-zmax",
+      "input": "maple-1-z1",
+      "kind": "surface",
+      "output": "maple-1-z2",
+      "process": "thickness_planer",
+      "removed": "maple-1-zmax-loss",
+      "side": "max"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-1-xmin",
+      "input": "maple-1-z2",
+      "kind": "surface",
+      "output": "maple-1-x1",
+      "process": "jointer",
+      "removed": "maple-1-xmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-1-xmax",
+      "input": "maple-1-x1",
+      "kind": "surface",
+      "output": "maple-1-x2",
+      "process": "jointer",
+      "removed": "maple-1-xmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "other_offcuts",
+      "id": "maple-1-rip",
+      "input": "maple-1-x2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-1-pre",
+        "maple-1-rip-off"
+      ],
+      "retained": 26000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-1-joint",
+      "input": "maple-1-pre",
+      "kind": "surface",
+      "output": "panel-1-strip-0",
+      "process": "jointer",
+      "removed": "maple-1-joint-loss",
+      "side": "max"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "walnut-1-separate",
+      "input": "walnut-1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-1-window",
+        "walnut-1-reserve"
+      ],
+      "retained": 395000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "walnut-1-end-min",
+      "input": "walnut-1-window",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-1-end1",
+        "walnut-1-end-min-off"
+      ],
+      "retained": 384000,
+      "retained_side": "max",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "walnut-1-end-max",
+      "input": "walnut-1-end1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-1-blank",
+        "walnut-1-end-max-off"
+      ],
+      "retained": 370000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 5000,
+      "axis": 2,
+      "category": "milling",
+      "id": "walnut-1-zmin",
+      "input": "walnut-1-blank",
+      "kind": "surface",
+      "output": "walnut-1-z1",
+      "process": "thickness_planer",
+      "removed": "walnut-1-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 5000,
+      "axis": 2,
+      "category": "milling",
+      "id": "walnut-1-zmax",
+      "input": "walnut-1-z1",
+      "kind": "surface",
+      "output": "walnut-1-z2",
+      "process": "thickness_planer",
+      "removed": "walnut-1-zmax-loss",
+      "side": "max"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-1-xmin",
+      "input": "walnut-1-z2",
+      "kind": "surface",
+      "output": "walnut-1-x1",
+      "process": "jointer",
+      "removed": "walnut-1-xmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-1-xmax",
+      "input": "walnut-1-x1",
+      "kind": "surface",
+      "output": "walnut-1-x2",
+      "process": "jointer",
+      "removed": "walnut-1-xmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "other_offcuts",
+      "id": "walnut-1-rip",
+      "input": "walnut-1-x2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-1-pre",
+        "walnut-1-rip-off"
+      ],
+      "retained": 26000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-1-joint",
+      "input": "walnut-1-pre",
+      "kind": "surface",
+      "output": "panel-1-strip-1",
+      "process": "jointer",
+      "removed": "walnut-1-joint-loss",
+      "side": "max"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "maple-2-separate",
+      "input": "maple-2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-2-window",
+        "maple-2-reserve"
+      ],
+      "retained": 395000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "maple-2-end-min",
+      "input": "maple-2-window",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-2-end1",
+        "maple-2-end-min-off"
+      ],
+      "retained": 384000,
+      "retained_side": "max",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "maple-2-end-max",
+      "input": "maple-2-end1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-2-blank",
+        "maple-2-end-max-off"
+      ],
+      "retained": 370000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 3000,
+      "axis": 2,
+      "category": "milling",
+      "id": "maple-2-zmin",
+      "input": "maple-2-blank",
+      "kind": "surface",
+      "output": "maple-2-z1",
+      "process": "thickness_planer",
+      "removed": "maple-2-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 3000,
+      "axis": 2,
+      "category": "milling",
+      "id": "maple-2-zmax",
+      "input": "maple-2-z1",
+      "kind": "surface",
+      "output": "maple-2-z2",
+      "process": "thickness_planer",
+      "removed": "maple-2-zmax-loss",
+      "side": "max"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-2-xmin",
+      "input": "maple-2-z2",
+      "kind": "surface",
+      "output": "maple-2-x1",
+      "process": "jointer",
+      "removed": "maple-2-xmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-2-xmax",
+      "input": "maple-2-x1",
+      "kind": "surface",
+      "output": "maple-2-x2",
+      "process": "jointer",
+      "removed": "maple-2-xmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "other_offcuts",
+      "id": "maple-2-rip",
+      "input": "maple-2-x2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-2-pre",
+        "maple-2-rip-off"
+      ],
+      "retained": 26000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-2-joint",
+      "input": "maple-2-pre",
+      "kind": "surface",
+      "output": "panel-1-strip-2",
+      "process": "jointer",
+      "removed": "maple-2-joint-loss",
+      "side": "max"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "walnut-2-separate",
+      "input": "walnut-2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-2-window",
+        "walnut-2-reserve"
+      ],
+      "retained": 395000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "walnut-2-end-min",
+      "input": "walnut-2-window",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-2-end1",
+        "walnut-2-end-min-off"
+      ],
+      "retained": 384000,
+      "retained_side": "max",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "walnut-2-end-max",
+      "input": "walnut-2-end1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-2-blank",
+        "walnut-2-end-max-off"
+      ],
+      "retained": 370000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 5000,
+      "axis": 2,
+      "category": "milling",
+      "id": "walnut-2-zmin",
+      "input": "walnut-2-blank",
+      "kind": "surface",
+      "output": "walnut-2-z1",
+      "process": "thickness_planer",
+      "removed": "walnut-2-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 5000,
+      "axis": 2,
+      "category": "milling",
+      "id": "walnut-2-zmax",
+      "input": "walnut-2-z1",
+      "kind": "surface",
+      "output": "walnut-2-z2",
+      "process": "thickness_planer",
+      "removed": "walnut-2-zmax-loss",
+      "side": "max"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-2-xmin",
+      "input": "walnut-2-z2",
+      "kind": "surface",
+      "output": "walnut-2-x1",
+      "process": "jointer",
+      "removed": "walnut-2-xmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-2-xmax",
+      "input": "walnut-2-x1",
+      "kind": "surface",
+      "output": "walnut-2-x2",
+      "process": "jointer",
+      "removed": "walnut-2-xmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "other_offcuts",
+      "id": "walnut-2-rip",
+      "input": "walnut-2-x2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-2-pre",
+        "walnut-2-rip-off"
+      ],
+      "retained": 26000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-2-joint",
+      "input": "walnut-2-pre",
+      "kind": "surface",
+      "output": "panel-1-strip-3",
+      "process": "jointer",
+      "removed": "walnut-2-joint-loss",
+      "side": "max"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "maple-3-separate",
+      "input": "maple-3",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-3-window",
+        "maple-3-reserve"
+      ],
+      "retained": 395000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "maple-3-end-min",
+      "input": "maple-3-window",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-3-end1",
+        "maple-3-end-min-off"
+      ],
+      "retained": 384000,
+      "retained_side": "max",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "maple-3-end-max",
+      "input": "maple-3-end1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-3-blank",
+        "maple-3-end-max-off"
+      ],
+      "retained": 370000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 3000,
+      "axis": 2,
+      "category": "milling",
+      "id": "maple-3-zmin",
+      "input": "maple-3-blank",
+      "kind": "surface",
+      "output": "maple-3-z1",
+      "process": "thickness_planer",
+      "removed": "maple-3-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 3000,
+      "axis": 2,
+      "category": "milling",
+      "id": "maple-3-zmax",
+      "input": "maple-3-z1",
+      "kind": "surface",
+      "output": "maple-3-z2",
+      "process": "thickness_planer",
+      "removed": "maple-3-zmax-loss",
+      "side": "max"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-3-xmin",
+      "input": "maple-3-z2",
+      "kind": "surface",
+      "output": "maple-3-x1",
+      "process": "jointer",
+      "removed": "maple-3-xmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-3-xmax",
+      "input": "maple-3-x1",
+      "kind": "surface",
+      "output": "maple-3-x2",
+      "process": "jointer",
+      "removed": "maple-3-xmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "other_offcuts",
+      "id": "maple-3-rip",
+      "input": "maple-3-x2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-3-pre",
+        "maple-3-rip-off"
+      ],
+      "retained": 26000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-3-joint",
+      "input": "maple-3-pre",
+      "kind": "surface",
+      "output": "panel-1-strip-4",
+      "process": "jointer",
+      "removed": "maple-3-joint-loss",
+      "side": "max"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "walnut-3-separate",
+      "input": "walnut-3",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-3-window",
+        "walnut-3-reserve"
+      ],
+      "retained": 395000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "walnut-3-end-min",
+      "input": "walnut-3-window",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-3-end1",
+        "walnut-3-end-min-off"
+      ],
+      "retained": 384000,
+      "retained_side": "max",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "walnut-3-end-max",
+      "input": "walnut-3-end1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-3-blank",
+        "walnut-3-end-max-off"
+      ],
+      "retained": 370000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 5000,
+      "axis": 2,
+      "category": "milling",
+      "id": "walnut-3-zmin",
+      "input": "walnut-3-blank",
+      "kind": "surface",
+      "output": "walnut-3-z1",
+      "process": "thickness_planer",
+      "removed": "walnut-3-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 5000,
+      "axis": 2,
+      "category": "milling",
+      "id": "walnut-3-zmax",
+      "input": "walnut-3-z1",
+      "kind": "surface",
+      "output": "walnut-3-z2",
+      "process": "thickness_planer",
+      "removed": "walnut-3-zmax-loss",
+      "side": "max"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-3-xmin",
+      "input": "walnut-3-z2",
+      "kind": "surface",
+      "output": "walnut-3-x1",
+      "process": "jointer",
+      "removed": "walnut-3-xmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-3-xmax",
+      "input": "walnut-3-x1",
+      "kind": "surface",
+      "output": "walnut-3-x2",
+      "process": "jointer",
+      "removed": "walnut-3-xmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "other_offcuts",
+      "id": "walnut-3-rip",
+      "input": "walnut-3-x2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-3-pre",
+        "walnut-3-rip-off"
+      ],
+      "retained": 26000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-3-joint",
+      "input": "walnut-3-pre",
+      "kind": "surface",
+      "output": "panel-1-strip-5",
+      "process": "jointer",
+      "removed": "walnut-3-joint-loss",
+      "side": "max"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "maple-4-separate",
+      "input": "maple-4",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-4-window",
+        "maple-4-reserve"
+      ],
+      "retained": 395000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "maple-4-end-min",
+      "input": "maple-4-window",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-4-end1",
+        "maple-4-end-min-off"
+      ],
+      "retained": 384000,
+      "retained_side": "max",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "maple-4-end-max",
+      "input": "maple-4-end1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-4-blank",
+        "maple-4-end-max-off"
+      ],
+      "retained": 370000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 3000,
+      "axis": 2,
+      "category": "milling",
+      "id": "maple-4-zmin",
+      "input": "maple-4-blank",
+      "kind": "surface",
+      "output": "maple-4-z1",
+      "process": "thickness_planer",
+      "removed": "maple-4-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 3000,
+      "axis": 2,
+      "category": "milling",
+      "id": "maple-4-zmax",
+      "input": "maple-4-z1",
+      "kind": "surface",
+      "output": "maple-4-z2",
+      "process": "thickness_planer",
+      "removed": "maple-4-zmax-loss",
+      "side": "max"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-4-xmin",
+      "input": "maple-4-z2",
+      "kind": "surface",
+      "output": "maple-4-x1",
+      "process": "jointer",
+      "removed": "maple-4-xmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-4-xmax",
+      "input": "maple-4-x1",
+      "kind": "surface",
+      "output": "maple-4-x2",
+      "process": "jointer",
+      "removed": "maple-4-xmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "other_offcuts",
+      "id": "maple-4-rip",
+      "input": "maple-4-x2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-4-pre",
+        "maple-4-rip-off"
+      ],
+      "retained": 26000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-4-joint",
+      "input": "maple-4-pre",
+      "kind": "surface",
+      "output": "panel-1-strip-6",
+      "process": "jointer",
+      "removed": "maple-4-joint-loss",
+      "side": "max"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "walnut-4-separate",
+      "input": "walnut-4",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-4-window",
+        "walnut-4-reserve"
+      ],
+      "retained": 395000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "walnut-4-end-min",
+      "input": "walnut-4-window",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-4-end1",
+        "walnut-4-end-min-off"
+      ],
+      "retained": 384000,
+      "retained_side": "max",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "walnut-4-end-max",
+      "input": "walnut-4-end1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-4-blank",
+        "walnut-4-end-max-off"
+      ],
+      "retained": 370000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 5000,
+      "axis": 2,
+      "category": "milling",
+      "id": "walnut-4-zmin",
+      "input": "walnut-4-blank",
+      "kind": "surface",
+      "output": "walnut-4-z1",
+      "process": "thickness_planer",
+      "removed": "walnut-4-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 5000,
+      "axis": 2,
+      "category": "milling",
+      "id": "walnut-4-zmax",
+      "input": "walnut-4-z1",
+      "kind": "surface",
+      "output": "walnut-4-z2",
+      "process": "thickness_planer",
+      "removed": "walnut-4-zmax-loss",
+      "side": "max"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-4-xmin",
+      "input": "walnut-4-z2",
+      "kind": "surface",
+      "output": "walnut-4-x1",
+      "process": "jointer",
+      "removed": "walnut-4-xmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-4-xmax",
+      "input": "walnut-4-x1",
+      "kind": "surface",
+      "output": "walnut-4-x2",
+      "process": "jointer",
+      "removed": "walnut-4-xmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "other_offcuts",
+      "id": "walnut-4-rip",
+      "input": "walnut-4-x2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-4-pre",
+        "walnut-4-rip-off"
+      ],
+      "retained": 26000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-4-joint",
+      "input": "walnut-4-pre",
+      "kind": "surface",
+      "output": "panel-1-strip-7",
+      "process": "jointer",
+      "removed": "walnut-4-joint-loss",
+      "side": "max"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "maple-5-separate",
+      "input": "maple-5",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-5-window",
+        "maple-5-reserve"
+      ],
+      "retained": 395000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "maple-5-end-min",
+      "input": "maple-5-window",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-5-end1",
+        "maple-5-end-min-off"
+      ],
+      "retained": 384000,
+      "retained_side": "max",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "maple-5-end-max",
+      "input": "maple-5-end1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-5-blank",
+        "maple-5-end-max-off"
+      ],
+      "retained": 370000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 3000,
+      "axis": 2,
+      "category": "milling",
+      "id": "maple-5-zmin",
+      "input": "maple-5-blank",
+      "kind": "surface",
+      "output": "maple-5-z1",
+      "process": "thickness_planer",
+      "removed": "maple-5-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 3000,
+      "axis": 2,
+      "category": "milling",
+      "id": "maple-5-zmax",
+      "input": "maple-5-z1",
+      "kind": "surface",
+      "output": "maple-5-z2",
+      "process": "thickness_planer",
+      "removed": "maple-5-zmax-loss",
+      "side": "max"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-5-xmin",
+      "input": "maple-5-z2",
+      "kind": "surface",
+      "output": "maple-5-x1",
+      "process": "jointer",
+      "removed": "maple-5-xmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-5-xmax",
+      "input": "maple-5-x1",
+      "kind": "surface",
+      "output": "maple-5-x2",
+      "process": "jointer",
+      "removed": "maple-5-xmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "other_offcuts",
+      "id": "maple-5-rip",
+      "input": "maple-5-x2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-5-pre",
+        "maple-5-rip-off"
+      ],
+      "retained": 26000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-5-joint",
+      "input": "maple-5-pre",
+      "kind": "surface",
+      "output": "panel-1-strip-8",
+      "process": "jointer",
+      "removed": "maple-5-joint-loss",
+      "side": "max"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "walnut-5-separate",
+      "input": "walnut-5",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-5-window",
+        "walnut-5-reserve"
+      ],
+      "retained": 395000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "walnut-5-end-min",
+      "input": "walnut-5-window",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-5-end1",
+        "walnut-5-end-min-off"
+      ],
+      "retained": 384000,
+      "retained_side": "max",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "walnut-5-end-max",
+      "input": "walnut-5-end1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-5-blank",
+        "walnut-5-end-max-off"
+      ],
+      "retained": 370000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 5000,
+      "axis": 2,
+      "category": "milling",
+      "id": "walnut-5-zmin",
+      "input": "walnut-5-blank",
+      "kind": "surface",
+      "output": "walnut-5-z1",
+      "process": "thickness_planer",
+      "removed": "walnut-5-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 5000,
+      "axis": 2,
+      "category": "milling",
+      "id": "walnut-5-zmax",
+      "input": "walnut-5-z1",
+      "kind": "surface",
+      "output": "walnut-5-z2",
+      "process": "thickness_planer",
+      "removed": "walnut-5-zmax-loss",
+      "side": "max"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-5-xmin",
+      "input": "walnut-5-z2",
+      "kind": "surface",
+      "output": "walnut-5-x1",
+      "process": "jointer",
+      "removed": "walnut-5-xmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-5-xmax",
+      "input": "walnut-5-x1",
+      "kind": "surface",
+      "output": "walnut-5-x2",
+      "process": "jointer",
+      "removed": "walnut-5-xmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "other_offcuts",
+      "id": "walnut-5-rip",
+      "input": "walnut-5-x2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-5-pre",
+        "walnut-5-rip-off"
+      ],
+      "retained": 26000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-5-joint",
+      "input": "walnut-5-pre",
+      "kind": "surface",
+      "output": "panel-1-strip-9",
+      "process": "jointer",
+      "removed": "walnut-5-joint-loss",
+      "side": "max"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "maple-6-separate",
+      "input": "maple-6",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-6-window",
+        "maple-6-reserve"
+      ],
+      "retained": 395000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "maple-6-end-min",
+      "input": "maple-6-window",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-6-end1",
+        "maple-6-end-min-off"
+      ],
+      "retained": 384000,
+      "retained_side": "max",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "maple-6-end-max",
+      "input": "maple-6-end1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-6-blank",
+        "maple-6-end-max-off"
+      ],
+      "retained": 370000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 3000,
+      "axis": 2,
+      "category": "milling",
+      "id": "maple-6-zmin",
+      "input": "maple-6-blank",
+      "kind": "surface",
+      "output": "maple-6-z1",
+      "process": "thickness_planer",
+      "removed": "maple-6-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 3000,
+      "axis": 2,
+      "category": "milling",
+      "id": "maple-6-zmax",
+      "input": "maple-6-z1",
+      "kind": "surface",
+      "output": "maple-6-z2",
+      "process": "thickness_planer",
+      "removed": "maple-6-zmax-loss",
+      "side": "max"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-6-xmin",
+      "input": "maple-6-z2",
+      "kind": "surface",
+      "output": "maple-6-x1",
+      "process": "jointer",
+      "removed": "maple-6-xmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-6-xmax",
+      "input": "maple-6-x1",
+      "kind": "surface",
+      "output": "maple-6-x2",
+      "process": "jointer",
+      "removed": "maple-6-xmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "other_offcuts",
+      "id": "maple-6-rip",
+      "input": "maple-6-x2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-6-pre",
+        "maple-6-rip-off"
+      ],
+      "retained": 26000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-6-joint",
+      "input": "maple-6-pre",
+      "kind": "surface",
+      "output": "panel-1-strip-10",
+      "process": "jointer",
+      "removed": "maple-6-joint-loss",
+      "side": "max"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "walnut-6-separate",
+      "input": "walnut-6",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-6-window",
+        "walnut-6-reserve"
+      ],
+      "retained": 395000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "walnut-6-end-min",
+      "input": "walnut-6-window",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-6-end1",
+        "walnut-6-end-min-off"
+      ],
+      "retained": 384000,
+      "retained_side": "max",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "walnut-6-end-max",
+      "input": "walnut-6-end1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-6-blank",
+        "walnut-6-end-max-off"
+      ],
+      "retained": 370000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 5000,
+      "axis": 2,
+      "category": "milling",
+      "id": "walnut-6-zmin",
+      "input": "walnut-6-blank",
+      "kind": "surface",
+      "output": "walnut-6-z1",
+      "process": "thickness_planer",
+      "removed": "walnut-6-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 5000,
+      "axis": 2,
+      "category": "milling",
+      "id": "walnut-6-zmax",
+      "input": "walnut-6-z1",
+      "kind": "surface",
+      "output": "walnut-6-z2",
+      "process": "thickness_planer",
+      "removed": "walnut-6-zmax-loss",
+      "side": "max"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-6-xmin",
+      "input": "walnut-6-z2",
+      "kind": "surface",
+      "output": "walnut-6-x1",
+      "process": "jointer",
+      "removed": "walnut-6-xmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-6-xmax",
+      "input": "walnut-6-x1",
+      "kind": "surface",
+      "output": "walnut-6-x2",
+      "process": "jointer",
+      "removed": "walnut-6-xmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "other_offcuts",
+      "id": "walnut-6-rip",
+      "input": "walnut-6-x2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-6-pre",
+        "walnut-6-rip-off"
+      ],
+      "retained": 26000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-6-joint",
+      "input": "walnut-6-pre",
+      "kind": "surface",
+      "output": "panel-1-strip-11",
+      "process": "jointer",
+      "removed": "walnut-6-joint-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "id": "panel-1-glue",
+      "inputs": [
+        "panel-1-strip-0",
+        "panel-1-strip-1",
+        "panel-1-strip-2",
+        "panel-1-strip-3",
+        "panel-1-strip-4",
+        "panel-1-strip-5",
+        "panel-1-strip-6",
+        "panel-1-strip-7",
+        "panel-1-strip-8",
+        "panel-1-strip-9",
+        "panel-1-strip-10",
+        "panel-1-strip-11"
+      ],
+      "kind": "glue",
+      "negligible_glue_line": true,
+      "output": "panel-1-raw",
+      "prepared_faces": true,
+      "stage": "first"
+    },
+    {
+      "amount": 1000,
+      "axis": 2,
+      "category": "milling",
+      "id": "panel-1-zmin",
+      "input": "panel-1-raw",
+      "kind": "surface",
+      "output": "panel-1-z1",
+      "process": "thickness_planer",
+      "removed": "panel-1-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 2,
+      "category": "milling",
+      "id": "panel-1-zmax",
+      "input": "panel-1-z1",
+      "kind": "surface",
+      "output": "panel-1-flat",
+      "process": "thickness_planer",
+      "removed": "panel-1-zmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "panel-1-slice-0",
+      "input": "panel-1-flat",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "slice-0",
+        "panel-1-remainder-0"
+      ],
+      "retained": 32000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "id": "row-0-rotate",
+      "input": "slice-0",
+      "kind": "rotate",
+      "output": "row-0",
+      "perm": [
+        0,
+        2,
+        1
+      ],
+      "sign": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "panel-1-slice-1",
+      "input": "panel-1-remainder-0",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "slice-1",
+        "panel-1-remainder-1"
+      ],
+      "retained": 32000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "id": "row-1-rotate",
+      "input": "slice-1",
+      "kind": "rotate",
+      "output": "row-1",
+      "perm": [
+        0,
+        2,
+        1
+      ],
+      "sign": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "panel-1-slice-2",
+      "input": "panel-1-remainder-1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "slice-2",
+        "panel-1-remainder-2"
+      ],
+      "retained": 32000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "id": "row-2-rotate",
+      "input": "slice-2",
+      "kind": "rotate",
+      "output": "row-2",
+      "perm": [
+        0,
+        2,
+        1
+      ],
+      "sign": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "panel-1-slice-3",
+      "input": "panel-1-remainder-2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "slice-3",
+        "panel-1-remainder-3"
+      ],
+      "retained": 32000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "id": "row-3-rotate",
+      "input": "slice-3",
+      "kind": "rotate",
+      "output": "row-3",
+      "perm": [
+        0,
+        2,
+        1
+      ],
+      "sign": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "panel-1-slice-4",
+      "input": "panel-1-remainder-3",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "slice-4",
+        "panel-1-remainder-4"
+      ],
+      "retained": 32000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "id": "row-4-rotate",
+      "input": "slice-4",
+      "kind": "rotate",
+      "output": "row-4",
+      "perm": [
+        0,
+        2,
+        1
+      ],
+      "sign": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "panel-1-slice-5",
+      "input": "panel-1-remainder-4",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "slice-5",
+        "panel-1-remainder-5"
+      ],
+      "retained": 32000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "id": "row-5-rotate",
+      "input": "slice-5",
+      "kind": "rotate",
+      "output": "row-5",
+      "perm": [
+        0,
+        2,
+        1
+      ],
+      "sign": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "maple-7-separate",
+      "input": "maple-7",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-7-window",
+        "maple-7-reserve"
+      ],
+      "retained": 395000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "maple-7-end-min",
+      "input": "maple-7-window",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-7-end1",
+        "maple-7-end-min-off"
+      ],
+      "retained": 384000,
+      "retained_side": "max",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "maple-7-end-max",
+      "input": "maple-7-end1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-7-blank",
+        "maple-7-end-max-off"
+      ],
+      "retained": 370000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 3000,
+      "axis": 2,
+      "category": "milling",
+      "id": "maple-7-zmin",
+      "input": "maple-7-blank",
+      "kind": "surface",
+      "output": "maple-7-z1",
+      "process": "thickness_planer",
+      "removed": "maple-7-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 3000,
+      "axis": 2,
+      "category": "milling",
+      "id": "maple-7-zmax",
+      "input": "maple-7-z1",
+      "kind": "surface",
+      "output": "maple-7-z2",
+      "process": "thickness_planer",
+      "removed": "maple-7-zmax-loss",
+      "side": "max"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-7-xmin",
+      "input": "maple-7-z2",
+      "kind": "surface",
+      "output": "maple-7-x1",
+      "process": "jointer",
+      "removed": "maple-7-xmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-7-xmax",
+      "input": "maple-7-x1",
+      "kind": "surface",
+      "output": "maple-7-x2",
+      "process": "jointer",
+      "removed": "maple-7-xmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "other_offcuts",
+      "id": "maple-7-rip",
+      "input": "maple-7-x2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-7-pre",
+        "maple-7-rip-off"
+      ],
+      "retained": 26000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-7-joint",
+      "input": "maple-7-pre",
+      "kind": "surface",
+      "output": "panel-2-strip-0",
+      "process": "jointer",
+      "removed": "maple-7-joint-loss",
+      "side": "max"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "walnut-7-separate",
+      "input": "walnut-7",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-7-window",
+        "walnut-7-reserve"
+      ],
+      "retained": 395000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "walnut-7-end-min",
+      "input": "walnut-7-window",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-7-end1",
+        "walnut-7-end-min-off"
+      ],
+      "retained": 384000,
+      "retained_side": "max",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "walnut-7-end-max",
+      "input": "walnut-7-end1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-7-blank",
+        "walnut-7-end-max-off"
+      ],
+      "retained": 370000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 5000,
+      "axis": 2,
+      "category": "milling",
+      "id": "walnut-7-zmin",
+      "input": "walnut-7-blank",
+      "kind": "surface",
+      "output": "walnut-7-z1",
+      "process": "thickness_planer",
+      "removed": "walnut-7-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 5000,
+      "axis": 2,
+      "category": "milling",
+      "id": "walnut-7-zmax",
+      "input": "walnut-7-z1",
+      "kind": "surface",
+      "output": "walnut-7-z2",
+      "process": "thickness_planer",
+      "removed": "walnut-7-zmax-loss",
+      "side": "max"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-7-xmin",
+      "input": "walnut-7-z2",
+      "kind": "surface",
+      "output": "walnut-7-x1",
+      "process": "jointer",
+      "removed": "walnut-7-xmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-7-xmax",
+      "input": "walnut-7-x1",
+      "kind": "surface",
+      "output": "walnut-7-x2",
+      "process": "jointer",
+      "removed": "walnut-7-xmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "other_offcuts",
+      "id": "walnut-7-rip",
+      "input": "walnut-7-x2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-7-pre",
+        "walnut-7-rip-off"
+      ],
+      "retained": 26000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-7-joint",
+      "input": "walnut-7-pre",
+      "kind": "surface",
+      "output": "panel-2-strip-1",
+      "process": "jointer",
+      "removed": "walnut-7-joint-loss",
+      "side": "max"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "maple-8-separate",
+      "input": "maple-8",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-8-window",
+        "maple-8-reserve"
+      ],
+      "retained": 395000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "maple-8-end-min",
+      "input": "maple-8-window",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-8-end1",
+        "maple-8-end-min-off"
+      ],
+      "retained": 384000,
+      "retained_side": "max",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "maple-8-end-max",
+      "input": "maple-8-end1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-8-blank",
+        "maple-8-end-max-off"
+      ],
+      "retained": 370000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 3000,
+      "axis": 2,
+      "category": "milling",
+      "id": "maple-8-zmin",
+      "input": "maple-8-blank",
+      "kind": "surface",
+      "output": "maple-8-z1",
+      "process": "thickness_planer",
+      "removed": "maple-8-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 3000,
+      "axis": 2,
+      "category": "milling",
+      "id": "maple-8-zmax",
+      "input": "maple-8-z1",
+      "kind": "surface",
+      "output": "maple-8-z2",
+      "process": "thickness_planer",
+      "removed": "maple-8-zmax-loss",
+      "side": "max"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-8-xmin",
+      "input": "maple-8-z2",
+      "kind": "surface",
+      "output": "maple-8-x1",
+      "process": "jointer",
+      "removed": "maple-8-xmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-8-xmax",
+      "input": "maple-8-x1",
+      "kind": "surface",
+      "output": "maple-8-x2",
+      "process": "jointer",
+      "removed": "maple-8-xmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "other_offcuts",
+      "id": "maple-8-rip",
+      "input": "maple-8-x2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-8-pre",
+        "maple-8-rip-off"
+      ],
+      "retained": 26000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-8-joint",
+      "input": "maple-8-pre",
+      "kind": "surface",
+      "output": "panel-2-strip-2",
+      "process": "jointer",
+      "removed": "maple-8-joint-loss",
+      "side": "max"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "walnut-8-separate",
+      "input": "walnut-8",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-8-window",
+        "walnut-8-reserve"
+      ],
+      "retained": 395000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "walnut-8-end-min",
+      "input": "walnut-8-window",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-8-end1",
+        "walnut-8-end-min-off"
+      ],
+      "retained": 384000,
+      "retained_side": "max",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "walnut-8-end-max",
+      "input": "walnut-8-end1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-8-blank",
+        "walnut-8-end-max-off"
+      ],
+      "retained": 370000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 5000,
+      "axis": 2,
+      "category": "milling",
+      "id": "walnut-8-zmin",
+      "input": "walnut-8-blank",
+      "kind": "surface",
+      "output": "walnut-8-z1",
+      "process": "thickness_planer",
+      "removed": "walnut-8-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 5000,
+      "axis": 2,
+      "category": "milling",
+      "id": "walnut-8-zmax",
+      "input": "walnut-8-z1",
+      "kind": "surface",
+      "output": "walnut-8-z2",
+      "process": "thickness_planer",
+      "removed": "walnut-8-zmax-loss",
+      "side": "max"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-8-xmin",
+      "input": "walnut-8-z2",
+      "kind": "surface",
+      "output": "walnut-8-x1",
+      "process": "jointer",
+      "removed": "walnut-8-xmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-8-xmax",
+      "input": "walnut-8-x1",
+      "kind": "surface",
+      "output": "walnut-8-x2",
+      "process": "jointer",
+      "removed": "walnut-8-xmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "other_offcuts",
+      "id": "walnut-8-rip",
+      "input": "walnut-8-x2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-8-pre",
+        "walnut-8-rip-off"
+      ],
+      "retained": 26000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-8-joint",
+      "input": "walnut-8-pre",
+      "kind": "surface",
+      "output": "panel-2-strip-3",
+      "process": "jointer",
+      "removed": "walnut-8-joint-loss",
+      "side": "max"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "maple-9-separate",
+      "input": "maple-9",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-9-window",
+        "maple-9-reserve"
+      ],
+      "retained": 395000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "maple-9-end-min",
+      "input": "maple-9-window",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-9-end1",
+        "maple-9-end-min-off"
+      ],
+      "retained": 384000,
+      "retained_side": "max",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "maple-9-end-max",
+      "input": "maple-9-end1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-9-blank",
+        "maple-9-end-max-off"
+      ],
+      "retained": 370000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 3000,
+      "axis": 2,
+      "category": "milling",
+      "id": "maple-9-zmin",
+      "input": "maple-9-blank",
+      "kind": "surface",
+      "output": "maple-9-z1",
+      "process": "thickness_planer",
+      "removed": "maple-9-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 3000,
+      "axis": 2,
+      "category": "milling",
+      "id": "maple-9-zmax",
+      "input": "maple-9-z1",
+      "kind": "surface",
+      "output": "maple-9-z2",
+      "process": "thickness_planer",
+      "removed": "maple-9-zmax-loss",
+      "side": "max"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-9-xmin",
+      "input": "maple-9-z2",
+      "kind": "surface",
+      "output": "maple-9-x1",
+      "process": "jointer",
+      "removed": "maple-9-xmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-9-xmax",
+      "input": "maple-9-x1",
+      "kind": "surface",
+      "output": "maple-9-x2",
+      "process": "jointer",
+      "removed": "maple-9-xmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "other_offcuts",
+      "id": "maple-9-rip",
+      "input": "maple-9-x2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-9-pre",
+        "maple-9-rip-off"
+      ],
+      "retained": 26000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-9-joint",
+      "input": "maple-9-pre",
+      "kind": "surface",
+      "output": "panel-2-strip-4",
+      "process": "jointer",
+      "removed": "maple-9-joint-loss",
+      "side": "max"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "walnut-9-separate",
+      "input": "walnut-9",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-9-window",
+        "walnut-9-reserve"
+      ],
+      "retained": 395000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "walnut-9-end-min",
+      "input": "walnut-9-window",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-9-end1",
+        "walnut-9-end-min-off"
+      ],
+      "retained": 384000,
+      "retained_side": "max",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "walnut-9-end-max",
+      "input": "walnut-9-end1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-9-blank",
+        "walnut-9-end-max-off"
+      ],
+      "retained": 370000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 5000,
+      "axis": 2,
+      "category": "milling",
+      "id": "walnut-9-zmin",
+      "input": "walnut-9-blank",
+      "kind": "surface",
+      "output": "walnut-9-z1",
+      "process": "thickness_planer",
+      "removed": "walnut-9-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 5000,
+      "axis": 2,
+      "category": "milling",
+      "id": "walnut-9-zmax",
+      "input": "walnut-9-z1",
+      "kind": "surface",
+      "output": "walnut-9-z2",
+      "process": "thickness_planer",
+      "removed": "walnut-9-zmax-loss",
+      "side": "max"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-9-xmin",
+      "input": "walnut-9-z2",
+      "kind": "surface",
+      "output": "walnut-9-x1",
+      "process": "jointer",
+      "removed": "walnut-9-xmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-9-xmax",
+      "input": "walnut-9-x1",
+      "kind": "surface",
+      "output": "walnut-9-x2",
+      "process": "jointer",
+      "removed": "walnut-9-xmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "other_offcuts",
+      "id": "walnut-9-rip",
+      "input": "walnut-9-x2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-9-pre",
+        "walnut-9-rip-off"
+      ],
+      "retained": 26000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-9-joint",
+      "input": "walnut-9-pre",
+      "kind": "surface",
+      "output": "panel-2-strip-5",
+      "process": "jointer",
+      "removed": "walnut-9-joint-loss",
+      "side": "max"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "maple-10-separate",
+      "input": "maple-10",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-10-window",
+        "maple-10-reserve"
+      ],
+      "retained": 395000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "maple-10-end-min",
+      "input": "maple-10-window",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-10-end1",
+        "maple-10-end-min-off"
+      ],
+      "retained": 384000,
+      "retained_side": "max",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "maple-10-end-max",
+      "input": "maple-10-end1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-10-blank",
+        "maple-10-end-max-off"
+      ],
+      "retained": 370000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 3000,
+      "axis": 2,
+      "category": "milling",
+      "id": "maple-10-zmin",
+      "input": "maple-10-blank",
+      "kind": "surface",
+      "output": "maple-10-z1",
+      "process": "thickness_planer",
+      "removed": "maple-10-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 3000,
+      "axis": 2,
+      "category": "milling",
+      "id": "maple-10-zmax",
+      "input": "maple-10-z1",
+      "kind": "surface",
+      "output": "maple-10-z2",
+      "process": "thickness_planer",
+      "removed": "maple-10-zmax-loss",
+      "side": "max"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-10-xmin",
+      "input": "maple-10-z2",
+      "kind": "surface",
+      "output": "maple-10-x1",
+      "process": "jointer",
+      "removed": "maple-10-xmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-10-xmax",
+      "input": "maple-10-x1",
+      "kind": "surface",
+      "output": "maple-10-x2",
+      "process": "jointer",
+      "removed": "maple-10-xmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "other_offcuts",
+      "id": "maple-10-rip",
+      "input": "maple-10-x2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-10-pre",
+        "maple-10-rip-off"
+      ],
+      "retained": 26000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-10-joint",
+      "input": "maple-10-pre",
+      "kind": "surface",
+      "output": "panel-2-strip-6",
+      "process": "jointer",
+      "removed": "maple-10-joint-loss",
+      "side": "max"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "walnut-10-separate",
+      "input": "walnut-10",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-10-window",
+        "walnut-10-reserve"
+      ],
+      "retained": 395000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "walnut-10-end-min",
+      "input": "walnut-10-window",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-10-end1",
+        "walnut-10-end-min-off"
+      ],
+      "retained": 384000,
+      "retained_side": "max",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "walnut-10-end-max",
+      "input": "walnut-10-end1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-10-blank",
+        "walnut-10-end-max-off"
+      ],
+      "retained": 370000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 5000,
+      "axis": 2,
+      "category": "milling",
+      "id": "walnut-10-zmin",
+      "input": "walnut-10-blank",
+      "kind": "surface",
+      "output": "walnut-10-z1",
+      "process": "thickness_planer",
+      "removed": "walnut-10-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 5000,
+      "axis": 2,
+      "category": "milling",
+      "id": "walnut-10-zmax",
+      "input": "walnut-10-z1",
+      "kind": "surface",
+      "output": "walnut-10-z2",
+      "process": "thickness_planer",
+      "removed": "walnut-10-zmax-loss",
+      "side": "max"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-10-xmin",
+      "input": "walnut-10-z2",
+      "kind": "surface",
+      "output": "walnut-10-x1",
+      "process": "jointer",
+      "removed": "walnut-10-xmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-10-xmax",
+      "input": "walnut-10-x1",
+      "kind": "surface",
+      "output": "walnut-10-x2",
+      "process": "jointer",
+      "removed": "walnut-10-xmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "other_offcuts",
+      "id": "walnut-10-rip",
+      "input": "walnut-10-x2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-10-pre",
+        "walnut-10-rip-off"
+      ],
+      "retained": 26000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-10-joint",
+      "input": "walnut-10-pre",
+      "kind": "surface",
+      "output": "panel-2-strip-7",
+      "process": "jointer",
+      "removed": "walnut-10-joint-loss",
+      "side": "max"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "maple-11-separate",
+      "input": "maple-11",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-11-window",
+        "maple-11-reserve"
+      ],
+      "retained": 395000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "maple-11-end-min",
+      "input": "maple-11-window",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-11-end1",
+        "maple-11-end-min-off"
+      ],
+      "retained": 384000,
+      "retained_side": "max",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "maple-11-end-max",
+      "input": "maple-11-end1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-11-blank",
+        "maple-11-end-max-off"
+      ],
+      "retained": 370000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 3000,
+      "axis": 2,
+      "category": "milling",
+      "id": "maple-11-zmin",
+      "input": "maple-11-blank",
+      "kind": "surface",
+      "output": "maple-11-z1",
+      "process": "thickness_planer",
+      "removed": "maple-11-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 3000,
+      "axis": 2,
+      "category": "milling",
+      "id": "maple-11-zmax",
+      "input": "maple-11-z1",
+      "kind": "surface",
+      "output": "maple-11-z2",
+      "process": "thickness_planer",
+      "removed": "maple-11-zmax-loss",
+      "side": "max"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-11-xmin",
+      "input": "maple-11-z2",
+      "kind": "surface",
+      "output": "maple-11-x1",
+      "process": "jointer",
+      "removed": "maple-11-xmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-11-xmax",
+      "input": "maple-11-x1",
+      "kind": "surface",
+      "output": "maple-11-x2",
+      "process": "jointer",
+      "removed": "maple-11-xmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "other_offcuts",
+      "id": "maple-11-rip",
+      "input": "maple-11-x2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-11-pre",
+        "maple-11-rip-off"
+      ],
+      "retained": 26000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-11-joint",
+      "input": "maple-11-pre",
+      "kind": "surface",
+      "output": "panel-2-strip-8",
+      "process": "jointer",
+      "removed": "maple-11-joint-loss",
+      "side": "max"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "walnut-11-separate",
+      "input": "walnut-11",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-11-window",
+        "walnut-11-reserve"
+      ],
+      "retained": 395000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "walnut-11-end-min",
+      "input": "walnut-11-window",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-11-end1",
+        "walnut-11-end-min-off"
+      ],
+      "retained": 384000,
+      "retained_side": "max",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "walnut-11-end-max",
+      "input": "walnut-11-end1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-11-blank",
+        "walnut-11-end-max-off"
+      ],
+      "retained": 370000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 5000,
+      "axis": 2,
+      "category": "milling",
+      "id": "walnut-11-zmin",
+      "input": "walnut-11-blank",
+      "kind": "surface",
+      "output": "walnut-11-z1",
+      "process": "thickness_planer",
+      "removed": "walnut-11-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 5000,
+      "axis": 2,
+      "category": "milling",
+      "id": "walnut-11-zmax",
+      "input": "walnut-11-z1",
+      "kind": "surface",
+      "output": "walnut-11-z2",
+      "process": "thickness_planer",
+      "removed": "walnut-11-zmax-loss",
+      "side": "max"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-11-xmin",
+      "input": "walnut-11-z2",
+      "kind": "surface",
+      "output": "walnut-11-x1",
+      "process": "jointer",
+      "removed": "walnut-11-xmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-11-xmax",
+      "input": "walnut-11-x1",
+      "kind": "surface",
+      "output": "walnut-11-x2",
+      "process": "jointer",
+      "removed": "walnut-11-xmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "other_offcuts",
+      "id": "walnut-11-rip",
+      "input": "walnut-11-x2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-11-pre",
+        "walnut-11-rip-off"
+      ],
+      "retained": 26000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-11-joint",
+      "input": "walnut-11-pre",
+      "kind": "surface",
+      "output": "panel-2-strip-9",
+      "process": "jointer",
+      "removed": "walnut-11-joint-loss",
+      "side": "max"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "maple-12-separate",
+      "input": "maple-12",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-12-window",
+        "maple-12-reserve"
+      ],
+      "retained": 395000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "maple-12-end-min",
+      "input": "maple-12-window",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-12-end1",
+        "maple-12-end-min-off"
+      ],
+      "retained": 384000,
+      "retained_side": "max",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "maple-12-end-max",
+      "input": "maple-12-end1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-12-blank",
+        "maple-12-end-max-off"
+      ],
+      "retained": 370000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 3000,
+      "axis": 2,
+      "category": "milling",
+      "id": "maple-12-zmin",
+      "input": "maple-12-blank",
+      "kind": "surface",
+      "output": "maple-12-z1",
+      "process": "thickness_planer",
+      "removed": "maple-12-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 3000,
+      "axis": 2,
+      "category": "milling",
+      "id": "maple-12-zmax",
+      "input": "maple-12-z1",
+      "kind": "surface",
+      "output": "maple-12-z2",
+      "process": "thickness_planer",
+      "removed": "maple-12-zmax-loss",
+      "side": "max"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-12-xmin",
+      "input": "maple-12-z2",
+      "kind": "surface",
+      "output": "maple-12-x1",
+      "process": "jointer",
+      "removed": "maple-12-xmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-12-xmax",
+      "input": "maple-12-x1",
+      "kind": "surface",
+      "output": "maple-12-x2",
+      "process": "jointer",
+      "removed": "maple-12-xmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "other_offcuts",
+      "id": "maple-12-rip",
+      "input": "maple-12-x2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "maple-12-pre",
+        "maple-12-rip-off"
+      ],
+      "retained": 26000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "maple-12-joint",
+      "input": "maple-12-pre",
+      "kind": "surface",
+      "output": "panel-2-strip-10",
+      "process": "jointer",
+      "removed": "maple-12-joint-loss",
+      "side": "max"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "walnut-12-separate",
+      "input": "walnut-12",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-12-window",
+        "walnut-12-reserve"
+      ],
+      "retained": 395000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "walnut-12-end-min",
+      "input": "walnut-12-window",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-12-end1",
+        "walnut-12-end-min-off"
+      ],
+      "retained": 384000,
+      "retained_side": "max",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "walnut-12-end-max",
+      "input": "walnut-12-end1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-12-blank",
+        "walnut-12-end-max-off"
+      ],
+      "retained": 370000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 5000,
+      "axis": 2,
+      "category": "milling",
+      "id": "walnut-12-zmin",
+      "input": "walnut-12-blank",
+      "kind": "surface",
+      "output": "walnut-12-z1",
+      "process": "thickness_planer",
+      "removed": "walnut-12-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 5000,
+      "axis": 2,
+      "category": "milling",
+      "id": "walnut-12-zmax",
+      "input": "walnut-12-z1",
+      "kind": "surface",
+      "output": "walnut-12-z2",
+      "process": "thickness_planer",
+      "removed": "walnut-12-zmax-loss",
+      "side": "max"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-12-xmin",
+      "input": "walnut-12-z2",
+      "kind": "surface",
+      "output": "walnut-12-x1",
+      "process": "jointer",
+      "removed": "walnut-12-xmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-12-xmax",
+      "input": "walnut-12-x1",
+      "kind": "surface",
+      "output": "walnut-12-x2",
+      "process": "jointer",
+      "removed": "walnut-12-xmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "other_offcuts",
+      "id": "walnut-12-rip",
+      "input": "walnut-12-x2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "walnut-12-pre",
+        "walnut-12-rip-off"
+      ],
+      "retained": 26000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "amount": 1000,
+      "axis": 0,
+      "category": "milling",
+      "id": "walnut-12-joint",
+      "input": "walnut-12-pre",
+      "kind": "surface",
+      "output": "panel-2-strip-11",
+      "process": "jointer",
+      "removed": "walnut-12-joint-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "id": "panel-2-glue",
+      "inputs": [
+        "panel-2-strip-0",
+        "panel-2-strip-1",
+        "panel-2-strip-2",
+        "panel-2-strip-3",
+        "panel-2-strip-4",
+        "panel-2-strip-5",
+        "panel-2-strip-6",
+        "panel-2-strip-7",
+        "panel-2-strip-8",
+        "panel-2-strip-9",
+        "panel-2-strip-10",
+        "panel-2-strip-11"
+      ],
+      "kind": "glue",
+      "negligible_glue_line": true,
+      "output": "panel-2-raw",
+      "prepared_faces": true,
+      "stage": "first"
+    },
+    {
+      "amount": 1000,
+      "axis": 2,
+      "category": "milling",
+      "id": "panel-2-zmin",
+      "input": "panel-2-raw",
+      "kind": "surface",
+      "output": "panel-2-z1",
+      "process": "thickness_planer",
+      "removed": "panel-2-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 2,
+      "category": "milling",
+      "id": "panel-2-zmax",
+      "input": "panel-2-z1",
+      "kind": "surface",
+      "output": "panel-2-flat",
+      "process": "thickness_planer",
+      "removed": "panel-2-zmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "panel-2-slice-0",
+      "input": "panel-2-flat",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "slice-6",
+        "panel-2-remainder-0"
+      ],
+      "retained": 32000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "id": "row-6-rotate",
+      "input": "slice-6",
+      "kind": "rotate",
+      "output": "row-6",
+      "perm": [
+        0,
+        2,
+        1
+      ],
+      "sign": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "panel-2-slice-1",
+      "input": "panel-2-remainder-0",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "slice-7",
+        "panel-2-remainder-1"
+      ],
+      "retained": 32000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "id": "row-7-rotate",
+      "input": "slice-7",
+      "kind": "rotate",
+      "output": "row-7",
+      "perm": [
+        0,
+        2,
+        1
+      ],
+      "sign": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "panel-2-slice-2",
+      "input": "panel-2-remainder-1",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "slice-8",
+        "panel-2-remainder-2"
+      ],
+      "retained": 32000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "id": "row-8-rotate",
+      "input": "slice-8",
+      "kind": "rotate",
+      "output": "row-8",
+      "perm": [
+        0,
+        2,
+        1
+      ],
+      "sign": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "panel-2-slice-3",
+      "input": "panel-2-remainder-2",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "slice-9",
+        "panel-2-remainder-3"
+      ],
+      "retained": 32000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "id": "row-9-rotate",
+      "input": "slice-9",
+      "kind": "rotate",
+      "output": "row-9",
+      "perm": [
+        0,
+        2,
+        1
+      ],
+      "sign": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "panel-2-slice-4",
+      "input": "panel-2-remainder-3",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "slice-10",
+        "panel-2-remainder-4"
+      ],
+      "retained": 32000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "id": "row-10-rotate",
+      "input": "slice-10",
+      "kind": "rotate",
+      "output": "row-10",
+      "perm": [
+        0,
+        2,
+        1
+      ],
+      "sign": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "axis": 1,
+      "category": "other_offcuts",
+      "id": "panel-2-slice-5",
+      "input": "panel-2-remainder-4",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "slice-11",
+        "panel-2-remainder-5"
+      ],
+      "retained": 32000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "id": "row-11-rotate",
+      "input": "slice-11",
+      "kind": "rotate",
+      "output": "row-11",
+      "perm": [
+        0,
+        2,
+        1
+      ],
+      "sign": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "axis": 1,
+      "id": "final-glue",
+      "inputs": [
+        "row-0",
+        "row-1",
+        "row-2",
+        "row-3",
+        "row-4",
+        "row-5",
+        "row-6",
+        "row-7",
+        "row-8",
+        "row-9",
+        "row-10",
+        "row-11"
+      ],
+      "kind": "glue",
+      "negligible_glue_line": true,
+      "output": "board-raw",
+      "prepared_faces": true,
+      "stage": "final"
+    },
+    {
+      "amount": 1000,
+      "axis": 2,
+      "category": "milling",
+      "id": "final-zmin",
+      "input": "board-raw",
+      "kind": "surface",
+      "output": "board-z1",
+      "process": "drum_sander",
+      "removed": "final-zmin-loss",
+      "side": "min"
+    },
+    {
+      "amount": 1000,
+      "axis": 2,
+      "category": "milling",
+      "id": "final-zmax",
+      "input": "board-z1",
+      "kind": "surface",
+      "output": "board-flat",
+      "process": "drum_sander",
+      "removed": "final-zmax-loss",
+      "side": "max"
+    },
+    {
+      "axis": 0,
+      "category": "trim",
+      "id": "final-x",
+      "input": "board-flat",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "board-x",
+        "final-x-off"
+      ],
+      "retained": 290000,
+      "retained_side": "min",
+      "tool": "saw"
+    },
+    {
+      "axis": 1,
+      "category": "trim",
+      "id": "final-y",
+      "input": "board-x",
+      "kerf": 3000,
+      "kind": "cut",
+      "outputs": [
+        "finished",
+        "final-y-off"
+      ],
+      "retained": 290000,
+      "retained_side": "min",
+      "tool": "saw"
+    }
+  ],
+  "schema_version": "cbdesign-plan/v2",
+  "shop": {
+    "cutting": {
+      "final_trim": {
+        "kerf": 3000,
+        "max_input": [
+          1000000,
+          1000000,
+          1000000
+        ],
+        "min_input": [
+          1000,
+          1000,
+          1000
+        ]
+      },
+      "minimum_rip_width": 25000,
+      "new_face_jointing": 1000,
+      "preparation": {
+        "kerf": 3000,
+        "max_input": [
+          1000000,
+          1000000,
+          1000000
+        ],
+        "min_input": [
+          1000,
+          1000,
+          1000
+        ]
+      },
+      "separation": {
+        "kerf": 3000,
+        "max_input": [
+          1000000,
+          1000000,
+          1000000
+        ],
+        "min_input": [
+          1000,
+          1000,
+          1000
+        ]
+      },
+      "slice_max": 32000,
+      "slice_min": 32000,
+      "slicing": {
+        "kerf": 3000,
+        "max_input": [
+          1000000,
+          1000000,
+          1000000
+        ],
+        "min_input": [
+          1000,
+          1000,
+          1000
+        ]
+      },
+      "slicing_reserve": 160000
+    },
+    "manufacturing_increment": 1000,
+    "max_workpiece": [
+      1000000,
+      1000000,
+      1000000
+    ],
+    "surfacing": [
+      {
+        "axes": [
+          0
+        ],
+        "end_grain_supported": false,
+        "glue_ready": true,
+        "max_input": [
+          1000000,
+          1000000,
+          1000000
+        ],
+        "min_input": [
+          1000,
+          1000,
+          1000
+        ],
+        "process": "jointer"
+      },
+      {
+        "axes": [
+          2
+        ],
+        "end_grain_supported": false,
+        "glue_ready": true,
+        "max_input": [
+          1000000,
+          1000000,
+          1000000
+        ],
+        "min_input": [
+          1000,
+          1000,
+          1000
+        ],
+        "process": "thickness_planer"
+      },
+      {
+        "axes": [
+          2
+        ],
+        "end_grain_supported": true,
+        "glue_ready": true,
+        "max_input": [
+          1000000,
+          1000000,
+          1000000
+        ],
+        "min_input": [
+          1000,
+          1000,
+          1000
+        ],
+        "process": "drum_sander"
+      }
+    ]
+  },
+  "source_segments": [
+    {
+      "boundary": "allocated_window",
+      "id": "maple-1",
+      "length": 419000,
+      "separation_operation": "maple-1-separate",
+      "stock_type": "maple"
+    },
+    {
+      "boundary": "allocated_window",
+      "id": "walnut-1",
+      "length": 419000,
+      "separation_operation": "walnut-1-separate",
+      "stock_type": "walnut"
+    },
+    {
+      "boundary": "allocated_window",
+      "id": "maple-2",
+      "length": 419000,
+      "separation_operation": "maple-2-separate",
+      "stock_type": "maple"
+    },
+    {
+      "boundary": "allocated_window",
+      "id": "walnut-2",
+      "length": 419000,
+      "separation_operation": "walnut-2-separate",
+      "stock_type": "walnut"
+    },
+    {
+      "boundary": "allocated_window",
+      "id": "maple-3",
+      "length": 419000,
+      "separation_operation": "maple-3-separate",
+      "stock_type": "maple"
+    },
+    {
+      "boundary": "allocated_window",
+      "id": "walnut-3",
+      "length": 419000,
+      "separation_operation": "walnut-3-separate",
+      "stock_type": "walnut"
+    },
+    {
+      "boundary": "allocated_window",
+      "id": "maple-4",
+      "length": 419000,
+      "separation_operation": "maple-4-separate",
+      "stock_type": "maple"
+    },
+    {
+      "boundary": "allocated_window",
+      "id": "walnut-4",
+      "length": 419000,
+      "separation_operation": "walnut-4-separate",
+      "stock_type": "walnut"
+    },
+    {
+      "boundary": "allocated_window",
+      "id": "maple-5",
+      "length": 419000,
+      "separation_operation": "maple-5-separate",
+      "stock_type": "maple"
+    },
+    {
+      "boundary": "allocated_window",
+      "id": "walnut-5",
+      "length": 419000,
+      "separation_operation": "walnut-5-separate",
+      "stock_type": "walnut"
+    },
+    {
+      "boundary": "allocated_window",
+      "id": "maple-6",
+      "length": 419000,
+      "separation_operation": "maple-6-separate",
+      "stock_type": "maple"
+    },
+    {
+      "boundary": "allocated_window",
+      "id": "walnut-6",
+      "length": 419000,
+      "separation_operation": "walnut-6-separate",
+      "stock_type": "walnut"
+    },
+    {
+      "boundary": "allocated_window",
+      "id": "maple-7",
+      "length": 419000,
+      "separation_operation": "maple-7-separate",
+      "stock_type": "maple"
+    },
+    {
+      "boundary": "allocated_window",
+      "id": "walnut-7",
+      "length": 419000,
+      "separation_operation": "walnut-7-separate",
+      "stock_type": "walnut"
+    },
+    {
+      "boundary": "allocated_window",
+      "id": "maple-8",
+      "length": 419000,
+      "separation_operation": "maple-8-separate",
+      "stock_type": "maple"
+    },
+    {
+      "boundary": "allocated_window",
+      "id": "walnut-8",
+      "length": 419000,
+      "separation_operation": "walnut-8-separate",
+      "stock_type": "walnut"
+    },
+    {
+      "boundary": "allocated_window",
+      "id": "maple-9",
+      "length": 419000,
+      "separation_operation": "maple-9-separate",
+      "stock_type": "maple"
+    },
+    {
+      "boundary": "allocated_window",
+      "id": "walnut-9",
+      "length": 419000,
+      "separation_operation": "walnut-9-separate",
+      "stock_type": "walnut"
+    },
+    {
+      "boundary": "allocated_window",
+      "id": "maple-10",
+      "length": 419000,
+      "separation_operation": "maple-10-separate",
+      "stock_type": "maple"
+    },
+    {
+      "boundary": "allocated_window",
+      "id": "walnut-10",
+      "length": 419000,
+      "separation_operation": "walnut-10-separate",
+      "stock_type": "walnut"
+    },
+    {
+      "boundary": "allocated_window",
+      "id": "maple-11",
+      "length": 419000,
+      "separation_operation": "maple-11-separate",
+      "stock_type": "maple"
+    },
+    {
+      "boundary": "allocated_window",
+      "id": "walnut-11",
+      "length": 419000,
+      "separation_operation": "walnut-11-separate",
+      "stock_type": "walnut"
+    },
+    {
+      "boundary": "allocated_window",
+      "id": "maple-12",
+      "length": 419000,
+      "separation_operation": "maple-12-separate",
+      "stock_type": "maple"
+    },
+    {
+      "boundary": "allocated_window",
+      "id": "walnut-12",
+      "length": 419000,
+      "separation_operation": "walnut-12-separate",
+      "stock_type": "walnut"
+    }
+  ],
+  "stock_types": [
+    {
+      "grain": [
+        0,
+        1,
+        0
+      ],
+      "id": "maple",
+      "preparation": {
+        "x_max": 1000,
+        "x_min": 1000,
+        "y_max": 8000,
+        "y_min": 8000,
+        "z_max": 3000,
+        "z_min": 3000
+      },
+      "species": "maple",
+      "thickness": 33000,
+      "width": 108000
+    },
+    {
+      "grain": [
+        0,
+        1,
+        0
+      ],
+      "id": "walnut",
+      "preparation": {
+        "x_max": 1000,
+        "x_min": 1000,
+        "y_max": 8000,
+        "y_min": 8000,
+        "z_max": 3000,
+        "z_min": 3000
+      },
+      "species": "walnut",
+      "thickness": 37000,
+      "width": 83000
+    }
+  ],
+  "template": {
+    "panels": [
+      {
+        "id": "panel-1",
+        "part": "panel-1-raw",
+        "recipe": "recipe-1",
+        "strips": [
+          "panel-1-strip-0",
+          "panel-1-strip-1",
+          "panel-1-strip-2",
+          "panel-1-strip-3",
+          "panel-1-strip-4",
+          "panel-1-strip-5",
+          "panel-1-strip-6",
+          "panel-1-strip-7",
+          "panel-1-strip-8",
+          "panel-1-strip-9",
+          "panel-1-strip-10",
+          "panel-1-strip-11"
+        ]
+      },
+      {
+        "id": "panel-2",
+        "part": "panel-2-raw",
+        "recipe": "recipe-2",
+        "strips": [
+          "panel-2-strip-0",
+          "panel-2-strip-1",
+          "panel-2-strip-2",
+          "panel-2-strip-3",
+          "panel-2-strip-4",
+          "panel-2-strip-5",
+          "panel-2-strip-6",
+          "panel-2-strip-7",
+          "panel-2-strip-8",
+          "panel-2-strip-9",
+          "panel-2-strip-10",
+          "panel-2-strip-11"
+        ]
+      }
+    ],
+    "recipes": [
+      {
+        "cells": [
+          "maple",
+          "walnut",
+          "maple",
+          "walnut",
+          "maple",
+          "walnut",
+          "maple",
+          "walnut",
+          "maple",
+          "walnut",
+          "maple",
+          "walnut"
+        ],
+        "id": "recipe-1"
+      },
+      {
+        "cells": [
+          "maple",
+          "walnut",
+          "maple",
+          "walnut",
+          "maple",
+          "walnut",
+          "maple",
+          "walnut",
+          "maple",
+          "walnut",
+          "maple",
+          "walnut"
+        ],
+        "id": "recipe-2"
+      }
+    ],
+    "rows": [
+      {
+        "panel": "panel-1",
+        "recipe": "recipe-1",
+        "reversed": false,
+        "rotated_part": "row-0"
+      },
+      {
+        "panel": "panel-1",
+        "recipe": "recipe-1",
+        "reversed": false,
+        "rotated_part": "row-1"
+      },
+      {
+        "panel": "panel-1",
+        "recipe": "recipe-1",
+        "reversed": false,
+        "rotated_part": "row-2"
+      },
+      {
+        "panel": "panel-1",
+        "recipe": "recipe-1",
+        "reversed": false,
+        "rotated_part": "row-3"
+      },
+      {
+        "panel": "panel-1",
+        "recipe": "recipe-1",
+        "reversed": false,
+        "rotated_part": "row-4"
+      },
+      {
+        "panel": "panel-1",
+        "recipe": "recipe-1",
+        "reversed": false,
+        "rotated_part": "row-5"
+      },
+      {
+        "panel": "panel-2",
+        "recipe": "recipe-2",
+        "reversed": false,
+        "rotated_part": "row-6"
+      },
+      {
+        "panel": "panel-2",
+        "recipe": "recipe-2",
+        "reversed": false,
+        "rotated_part": "row-7"
+      },
+      {
+        "panel": "panel-2",
+        "recipe": "recipe-2",
+        "reversed": false,
+        "rotated_part": "row-8"
+      },
+      {
+        "panel": "panel-2",
+        "recipe": "recipe-2",
+        "reversed": false,
+        "rotated_part": "row-9"
+      },
+      {
+        "panel": "panel-2",
+        "recipe": "recipe-2",
+        "reversed": false,
+        "rotated_part": "row-10"
+      },
+      {
+        "panel": "panel-2",
+        "recipe": "recipe-2",
+        "reversed": false,
+        "rotated_part": "row-11"
+      }
+    ]
+  },
+  "title": "Illustrative stripes gallery board"
+}

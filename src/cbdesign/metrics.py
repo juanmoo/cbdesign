@@ -36,7 +36,8 @@ def plan_metrics(plan: PlanV2, result: Replay) -> dict[str, Any]:
 
     terminal = result.parts[result.terminal]
     retained_volume = terminal.volume
-    panels = [operation for operation in result.operations if operation["kind"] == "glue" and operation["stage"] == "first"]
+    # Singleton panels register without a fictitious first-stage glue operation.
+    panels = plan.template.panels
     glueups = [operation for operation in result.operations if operation["kind"] == "glue"]
     joints_by_stage = Counter(joint["stage"] for joint in result.joints)
     joint_area_by_stage = Counter()
@@ -50,11 +51,14 @@ def plan_metrics(plan: PlanV2, result: Replay) -> dict[str, Any]:
     for category, regions in result.losses.items():
         losses[category] = sum(region.volume for region in regions)
     capacities = tuple(int(value) for value in plan.shop.max_workpiece)
-    capacity_margins = {
-        part_id: [capacity - extent for capacity, extent in zip(capacities, part.size)]
-        for part_id, part in sorted(result.parts.items())
-    }
-    min_capacity_margin = [min(margins[axis] for margins in capacity_margins.values()) for axis in range(3)]
+    # Include consumed intermediate panels, not only terminal/offcut parts.
+    observed_sizes = [size for operation in result.operations
+                      for size in operation['output_sizes_um'].values()]
+    observed_sizes.extend((int(stock[segment.stock_type].width), int(segment.length),
+                           int(stock[segment.stock_type].thickness))
+                          for segment in plan.source_segments)
+    min_capacity_margin = [min(capacities[axis] - size[axis] for size in observed_sizes)
+                           for axis in range(3)]
     return {
         "source_segments": len(plan.source_segments),
         "source_volume_um3": source_volume,
