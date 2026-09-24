@@ -2,6 +2,8 @@
 
 Status: M1 executable fabrication-model prototype is implemented: strict JSON schema, exact nominal replay, provenance/ledger checks, CLI reports, SVG views, hand-authored fixtures, and regression tests. This document retains the planned architecture for later milestones; M2–M4 and optimization are not implemented or benchmarked.
 
+The **[implementation roadmap](implementation-roadmap.md)** is the detailed next-work execution plan. It maps the original milestones below to N1 (remaining fabrication foundation), N2 (exact generation), and N3 (approximation), with explicit acceptance gates and future work.
+
 ## 1. Build a thin end-to-end system
 
 Start with Python, exact dimension arithmetic, typed domain objects, JSON, and SVG. Add a local browser interface after a valid end-to-end plan can be generated. Do not build hosting infrastructure first.

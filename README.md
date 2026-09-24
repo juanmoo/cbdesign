@@ -4,6 +4,14 @@
 
 It independently reconstructs strict versioned JSON plans from finite stock boxes; replays full-span cuts, face-specific removals, proper rigid rotations, and ordered full-face glue-ups; preserves species/grain/source provenance; enforces the restricted two-species, two-stage intact-slice construction template; and produces an exact per-species material ledger plus SVG views.
 
+## Implementation plan
+
+Read the **[full implementation roadmap](docs/implementation-roadmap.md)** for the next three milestones, concrete work packages, acceptance gates, and future tolerance/UI/physical-validation work.
+
+1. **N1:** complete the nominal rough-stock fabrication foundation and CI.
+2. **N2:** generate complete plans from explicit binary grids.
+3. **N3:** approximate patterns under recipe budgets and compare trade-offs.
+
 ## Install and run
 
 Python 3.12+ is required. Use a project-local environment:
