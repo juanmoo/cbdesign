@@ -1,0 +1,26 @@
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.hypothesis/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Build output
+build/
+dist/
+*.egg-info/
+node_modules/
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+.claude/settings.local.json
+
+# Editor and OS files
+.DS_Store
+*~
