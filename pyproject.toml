@@ -7,7 +7,7 @@ name = "cbdesign"
 version = "0.1.0"
 description = "Nominal replay and accounting for two-species end-grain board plans"
 requires-python = ">=3.12"
-dependencies = ["pydantic>=2.8,<3"]
+dependencies = ["pydantic>=2.8,<3", "Pillow>=10,<13", "reportlab>=4,<5"]
 
 [project.optional-dependencies]
 test = ["pytest>=8", "hypothesis>=6"]
@@ -20,6 +20,9 @@ package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+cbdesign = ["static/*"]
 
 [tool.pytest.ini_options]
 addopts = "-q"

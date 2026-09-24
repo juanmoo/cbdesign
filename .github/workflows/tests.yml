@@ -22,3 +22,6 @@ jobs:
       - run: python -m build
       - run: python -m cbdesign validate examples/checkerboard.json --output /tmp/cbdesign-v1
       - run: python -m cbdesign validate examples/rough-stock-board.json --output /tmp/cbdesign-v2
+      - run: python -m cbdesign demo --pattern checkerboard > /tmp/cbdesign-request.json
+      - run: python -m cbdesign generate /tmp/cbdesign-request.json --output /tmp/cbdesign-generated
+      - run: python -m cbdesign search /tmp/cbdesign-request.json --output /tmp/cbdesign-search --work-budget 4

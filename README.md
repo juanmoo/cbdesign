@@ -1,16 +1,18 @@
 # cbdesign
 
-`cbdesign` is an executable, **nominal-only** replay and accounting prototype for hand-authored two-species end-grain cutting-board plans. N1 adds rough-stock preparation and required shop profiles; legacy M1 prepared-strip plans remain supported. It does not yet generate recipes or optimize stock layouts.
+`cbdesign` is a local **bitmap-to-end-grain-board planning workbench**. It generates two-species plans from binary grids, searches bounded recipe alternatives, independently replays fabrication geometry, and exports diagrams, material accounting, CSV and PDF reports. Legacy hand-authored v1/v2 plans remain supported.
+
+**Planning software, not shop instructions:** nominal validation and optional conservative dimensional bounds do not certify machine safety, joint strength, wood stability, or actual fabrication.
 
 It independently reconstructs strict versioned JSON plans from finite stock boxes; replays full-span cuts, face-specific removals, proper rigid rotations, and ordered full-face glue-ups; preserves species/grain/source provenance; enforces the restricted two-species, two-stage intact-slice construction template; and produces an exact per-species material ledger plus SVG views.
 
 ## Implementation plan
 
-Read the **[full implementation roadmap](docs/implementation-roadmap.md)** for the next three milestones, concrete work packages, acceptance gates, and future tolerance/UI/physical-validation work.
+See the **[current completion status](docs/implementation-status.md)** for verified gates and remaining limitations, and the [original roadmap](docs/implementation-roadmap.md) for the broader acceptance criteria.
 
-1. **N1:** nominal rough-stock fabrication foundation and CI configuration (implemented; physical review remains separate).
-2. **N2:** generate complete plans from explicit binary grids.
-3. **N3:** approximate patterns under recipe budgets and compare trade-offs.
+- **N1/N2:** independent rough-stock replay and deterministic exact compilation, finite inventory and canonical panel batching.
+- **N3:** bounded recipe/grid search, exact retained-area mismatch and replay-derived fabrication trade-offs.
+- **F1/F2/F3:** opt-in dimensional-bound sidecars, loopback browser workflow, PNG/project import and PDF/CSV/SVG/JSON exports.
 
 ## Install and run
 
@@ -25,7 +27,33 @@ python3 -m venv .venv
 .venv/bin/pytest
 ```
 
-The CLI writes `validation.json`, `material-ledger.json`, `board.svg`, `panels.svg`, `stock.svg`, and `operations.txt`. It refuses to overwrite an output directory unless `--overwrite` is supplied, and does not write success artifacts after failed replay.
+### Browser demo — no JSON editing
+
+```bash
+.venv/bin/cbdesign serve --port 8765
+```
+
+Open **http://127.0.0.1:8765**. Choose a built-in pattern or upload [`mouse-head.png`](examples/targets/mouse-head.png), leave the illustrative 12×12 target grid and 290×290×30 mm board defaults, and select **Search alternatives**. Compare achieved boards and mismatch views, inspect metrics, download a fabrication ZIP, or save/reload a JSON project. Wood quantities and dimensions are editable under **Wood & shop settings**. Values in the forms are micrometres, not millimetres. The service binds only to loopback and uses no cloud service.
+
+### CLI generation and search
+
+```bash
+.venv/bin/cbdesign demo --pattern checkerboard > /tmp/board-request.json
+.venv/bin/cbdesign generate /tmp/board-request.json --output /tmp/generated-board
+.venv/bin/cbdesign search /tmp/board-request.json \
+  --target examples/targets/mouse-head.png --recipes 8 --work-budget 32 \
+  --output /tmp/mouse-alternatives
+```
+
+The common bundle contains `plan.json`, `validation.json`, `material-ledger.json`, `board.svg`, `panels.svg`, `stock.svg`, `operations.txt`, `operations.csv`, `material.csv`, and `report.pdf`. Search adds frozen request/target snapshots, metrics and a ZIP per retained alternative. It refuses to overwrite an output directory unless `--overwrite` is supplied and preserves unrelated filenames. Nominal replay failures do not replace existing reports.
+
+The [common-pattern gallery](examples/gallery/README.md) contains checkerboard, stripes, stepped diamond, basket-weave-style grid, block letter, asymmetric, unrelated-row and mouse-head examples. Regenerate the measured corpus with:
+
+```bash
+.venv/bin/python scripts/regenerate_gallery.py --write-fixtures --regenerate
+```
+
+`--write-fixtures` deliberately replaces the illustrative input fixtures; omit it to benchmark existing frozen inputs.
 
 ## Visual smoke tests
 
@@ -67,7 +95,7 @@ Regenerate all bundles with `.venv/bin/python scripts/regenerate_previews.py`; a
 
 ## Version-specific validation boundary
 
-A `nominal_valid` result means the recorded plan passed exact nominal geometry, declared-profile, provenance partition, terminal-disposition, final-dimension, end-grain, and version-specific construction checks. It is **not** a fabrication certificate, machine instruction, safety assessment, joint-strength assessment, or actual-dimension guarantee. Interval/tolerance uncertainty propagation is not implemented; neither schema accepts uncertainty bounds.
+A `nominal_valid` result means the recorded plan passed exact nominal geometry, declared-profile, provenance partition, terminal-disposition, final-dimension, end-grain, and version-specific construction checks. It is **not** a fabrication certificate, machine instruction, safety assessment, joint-strength assessment, or actual-dimension guarantee. Neither plan schema embeds uncertainty bounds. An optional [digest-bound dimensional sidecar](docs/decisions/0004-dimensional-bounds.md) propagates exact affine bounds separately; unsupported semantics or unresolved all-realizations glue compatibility prevent a dimensional-valid label.
 
 - **V1:** the tiny checkerboard/asymmetric fixtures begin with prepared strips. Optional saw-kerf, workpiece-capacity and slice-length checks are reported as passed only when supplied. Handling minima, slicing reserves and rough preparation remain explicitly `not_evaluated` for this version.
 - **V2:** the rough-stock fixture requires stock types, finite source separation, six-face preparation allowances, stage-specific kerfs/feed minima/capacities, slicing reserves, supported surfacing processes, and independent physical-panel/visual-cell metadata. Missing required fields fail schema validation; declaration alone cannot establish prepared faces.
@@ -76,6 +104,10 @@ Synthetic examples and profiles are examples only, not universal safe defaults. 
 
 See [plan format](docs/plan-format.md), [fabrication model](docs/fabrication-model.md), and [acceptance criteria](docs/acceptance-and-validation.md).
 
-## Deferred scope
+## Limits and remaining work
 
-M1 deliberately excludes optimizer/recipe generation, bitmap preprocessing, UI, finite-inventory/purchasing optimization, probabilistic tolerances, uncertainty propagation, physical review, and any safety certification.
+- The exact request grid describes the **pre-trim** board. Explicit X/Y trim amounts crop its maximum edges; dimensions must divide into exact manufacturing increments. Bitmap search instead fixes the target across the finished rectangle and scores actual retained replay geometry.
+- Canonical rows share capacity-bounded panels. Allocation consumes finite source entries deterministically, but conservatively uses one source per whole-cell strip; it does not pack multiple strips into each source or optimize purchasing/offcut reuse.
+- Search is a bounded heuristic, not a global optimizer. Exhaustion or no candidate is not proof that fabrication is impossible. Time/cancellation checks occur between candidate evaluations, not during one replay.
+- All supplied wood/tool dimensions are **illustrative**, not measurements or safe-machine defaults. Nonzero dimensional bounds require explicit named declarations; the zero-width sidecar helper is only a format demonstration.
+- Physical expert review, fabrication/measurement, strength/safety certification, wood movement, probabilistic yield and broader construction families remain outside this software release.
