@@ -10,7 +10,7 @@ from .render_svg import board_svg, panels_svg, stock_svg
 
 REPORT_FILES = frozenset({'plan.json', 'validation.json', 'material-ledger.json',
                           'board.svg', 'panels.svg', 'stock.svg', 'operations.txt',
-                          'operations.csv', 'material.csv', 'report.pdf', 'uncertainty.json'})
+                          'operations.csv', 'material.csv', 'report.pdf', 'uncertainty.json', 'replay.html'})
 
 
 def json_bytes(value) -> bytes:
@@ -29,6 +29,7 @@ def operations_text(operations: list[dict]) -> str:
 def plan_bundle(plan, report, replay, uncertainty=None) -> dict[str, bytes]:
     if report['status'] != 'nominal_valid' or replay is None:
         raise ValueError('reports require an independently nominal-valid plan')
+    from .offline_replay import replay_html
     files = {
         'plan.json': json_bytes(plan.model_dump(mode='json')),
         'validation.json': json_bytes(report),
@@ -40,6 +41,7 @@ def plan_bundle(plan, report, replay, uncertainty=None) -> dict[str, bytes]:
         'operations.csv': operations_csv(replay).encode(),
         'material.csv': material_csv(replay).encode(),
         'report.pdf': report_pdf(plan, report, replay, uncertainty),
+        'replay.html': replay_html(plan, replay if getattr(replay, 'trace', None) is not None else None),
     }
     if uncertainty is not None:
         files['uncertainty.json'] = json_bytes(uncertainty)

@@ -35,6 +35,14 @@ python3 -m venv .venv
 
 Open **http://127.0.0.1:8765**. Choose a built-in pattern or upload [`mouse-head.png`](examples/targets/mouse-head.png), leave the illustrative 12×12 target grid and 290×290×30 mm board defaults, and select **Search alternatives**. Compare achieved boards and mismatch views, inspect metrics, download a fabrication ZIP, or save/reload a JSON project. Wood quantities and dimensions are editable under **Wood & shop settings**. Values in the forms are micrometres, not millimetres. The service binds only to loopback and uses no cloud service.
 
+### Follow the fabrication replay
+
+Select **Replay steps** on an alternative to start with its stock overview, then use Previous/Next or the step selector. The walkthrough includes **every cut, surface preparation, rotation and glue-up**, with before/after geometry, dimensions in millimetres, grain orientation and part links to earlier/later operations. Operation numbers and cumulative saw-pass counts are separate.
+
+The two configured **stock types** define fixed width × thickness cross-sections. The current allocator consumes multiple finite **source segments** of those types; it does not model cutting them from two parent boards. The stripe example uses 24 source segments and 110 saw passes across 251 operations. This allocation is unchanged and remains conservative: one source per strip, without automatic offcut reuse. A cut remainder used later is distinguished from a terminal offcut.
+
+The downloaded ZIP also includes **`replay.html`**, a self-contained walkthrough that opens offline. Very large walkthroughs produce an explicit limit notice rather than a truncated sequence; the complete plan and operation CSV remain available. These are nominal geometry diagrams, not machine setup or safety instructions.
+
 ### CLI generation and search
 
 ```bash
@@ -45,7 +53,7 @@ Open **http://127.0.0.1:8765**. Choose a built-in pattern or upload [`mouse-head
   --output /tmp/mouse-alternatives
 ```
 
-The common bundle contains `plan.json`, `validation.json`, `material-ledger.json`, `board.svg`, `panels.svg`, `stock.svg`, `operations.txt`, `operations.csv`, `material.csv`, and `report.pdf`. Search adds frozen request/target snapshots, metrics and a ZIP per retained alternative. It refuses to overwrite an output directory unless `--overwrite` is supplied and preserves unrelated filenames. Nominal replay failures do not replace existing reports.
+The common bundle contains `plan.json`, `validation.json`, `material-ledger.json`, `board.svg`, `panels.svg`, `stock.svg`, `operations.txt`, `operations.csv`, `material.csv`, `report.pdf`, and the offline `replay.html` walkthrough. Search adds frozen request/target snapshots, metrics and a ZIP per retained alternative. It refuses to overwrite an output directory unless `--overwrite` is supplied and preserves unrelated filenames. Nominal replay failures do not replace existing reports.
 
 The [common-pattern gallery](examples/gallery/README.md) contains checkerboard, stripes, stepped diamond, basket-weave-style grid, block letter, asymmetric, unrelated-row and mouse-head examples. Regenerate the measured corpus with:
 

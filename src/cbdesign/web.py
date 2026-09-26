@@ -56,7 +56,15 @@ class _Job:
     def __init__(self, payload: dict[str, Any]):
         self.cancel, self.done = Event(), Event(); self.lock = Lock()
         self.progress: dict[str, Any] = {"state": "queued", "attempted": 0}; self.result: Any = None; self.error: str | None = None
+        # A generation identifies this job even after a later search replaces it.
+        self.generation = 0
         self.payload = payload
+        # The browser retains at most one traced candidate per job. Switching candidates
+        # evicts the prior trace rather than accumulating potentially large snapshots.
+        self._walkthrough_index: int | None = None
+        self._walkthrough: Any = None
+        self._walkthrough_error: str | None = None
+        self._walkthrough_building: tuple[int, Event] | None = None
 
     def start(self) -> None:
         Thread(target=self.run, daemon=True, name="cbdesign-search").start()
@@ -105,17 +113,60 @@ class _Job:
         with self.lock:
             result = self.result
             if result is not None:
-                result = {**result, "candidates": [{key: value for key, value in candidate.items() if key != "bundle"} for candidate in result["candidates"]]}
-            return {**self.progress, "done": self.done.is_set(), "error": self.error, "result": result}
+                # Status is deliberately a shallow view: a replay trace can be large and
+                # is only built through the explicit, lazy walkthrough endpoints.
+                visible = ("id", "label", "score", "metrics", "grid", "svg", "difference_svg", "mismatch_percent", "mismatch_mm2", "report", "achieved", "target_area", "difference")
+                result = {**result, "candidates": [{key: candidate[key] for key in visible if key in candidate} for candidate in result["candidates"]]}
+            return {**self.progress, "generation": self.generation, "done": self.done.is_set(), "error": self.error, "result": result}
+
+    def walkthrough(self, index: int) -> Any:
+        """Return the sole cached trace, building without holding the shared lock."""
+        with self.lock:
+            if self.result is None or not 0 <= index < len(self.result["candidates"]): raise IndexError
+            if self._walkthrough_index == index and self._walkthrough is not None: return self._walkthrough
+            if self._walkthrough_index == index and self._walkthrough_error is not None: raise ValueError(self._walkthrough_error)
+            if self._walkthrough_building is not None and self._walkthrough_building[0] == index:
+                waiting, builder = self._walkthrough_building[1], False
+            elif self._walkthrough_building is not None:
+                # Serialize candidate changes too, so exactly one trace is retained.
+                waiting, builder = self._walkthrough_building[1], False
+            else:
+                waiting, builder = Event(), True
+                self._walkthrough_building = (index, waiting)
+                plan = self.result["candidates"][index]["bundle"][0]
+        if not builder:
+            waiting.wait()
+            return self.walkthrough(index)
+        try:
+            from .render_replay import build_walkthrough
+            trace = build_walkthrough(plan)
+        except Exception as exc:
+            with self.lock:
+                if self._walkthrough_building and self._walkthrough_building[0] == index:
+                    self._walkthrough_error = str(exc); self._walkthrough_index = index
+                    self._walkthrough_building[1].set(); self._walkthrough_building = None
+            raise ValueError(str(exc)) from exc
+        with self.lock:
+            # An earlier build may finish after a newer candidate request. It must not
+            # evict the newer requested cache slot.
+            if self._walkthrough_building is None or self._walkthrough_building[0] == index:
+                self._walkthrough_index, self._walkthrough, self._walkthrough_error = index, trace, None
+                if self._walkthrough_building: self._walkthrough_building[1].set(); self._walkthrough_building = None
+        return trace
 
 
 class Workbench:
     """Owns the one permitted background search job."""
-    def __init__(self): self.job: _Job | None = None; self.lock = Lock()
+    def __init__(self): self.job: _Job | None = None; self.lock = Lock(); self._generation = 0
     def start(self, payload: dict[str, Any]) -> _Job:
         with self.lock:
             if self.job is not None and not self.job.done.is_set(): raise RuntimeError("a search is already running")
-            self.job = _Job(payload); self.job.start(); return self.job
+            self._generation += 1
+            self.job = _Job(payload); self.job.generation = self._generation; self.job.start(); return self.job
+    def current(self, generation: int) -> _Job:
+        with self.lock:
+            if self.job is None or self.job.generation != generation: raise LookupError
+            return self.job
 
 
 def make_server(port: int = 8765) -> ThreadingHTTPServer:
@@ -143,7 +194,30 @@ def make_server(port: int = 8765) -> ThreadingHTTPServer:
         def do_GET(self):
             if not self._same_origin(): self._json(HTTPStatus.FORBIDDEN, {"error":"local origin required"}); return
             path = urlparse(self.path).path
-            if path == "/api/status": self._json(200, workbench.job.status() if workbench.job else {"state":"idle", "done":True}); return
+            if path == "/api/status": self._json(200, workbench.job.status() if workbench.job else {"state":"idle", "generation": 0, "done":True}); return
+            if path.startswith("/api/walkthrough/"):
+                try:
+                    parts = path.strip("/").split("/")
+                    # /api/walkthrough/<generation>/<candidate>/manifest
+                    # /api/walkthrough/<generation>/<candidate>/step/<index>
+                    if parts[:2] != ["api", "walkthrough"] or len(parts) not in (5, 6): raise ValueError
+                    generation, candidate = int(parts[2]), int(parts[3])
+                    job = workbench.current(generation)
+                    if not job.done.is_set() or job.result is None: raise LookupError
+                    plan = job.result["candidates"][candidate]["bundle"][0]
+                    # Reject malformed/out-of-range requests before producing a trace.
+                    if len(parts) == 6 and (parts[4] != "step" or not 0 <= int(parts[5]) <= len(plan.operations) + 1): raise ValueError
+                    if len(parts) == 5 and parts[4] != "manifest": raise ValueError
+                    trace = job.walkthrough(candidate)
+                    from .render_replay import walkthrough_manifest, walkthrough_step
+                    if len(parts) == 5:
+                        self._json(200, {"generation": generation, "candidate": candidate, **walkthrough_manifest(plan, trace)})
+                    elif len(parts) == 6:
+                        index = int(parts[5])
+                        self._json(200, {"generation": generation, "candidate": candidate, **walkthrough_step(plan, trace, index)})
+                    else: raise ValueError
+                except (ValueError, IndexError, LookupError): self._json(404, {"error":"walkthrough not found"})
+                return
             if path == "/api/target":
                 try:
                     query = parse_qs(urlparse(self.path).query)
@@ -158,7 +232,14 @@ def make_server(port: int = 8765) -> ThreadingHTTPServer:
                 return
             if path.startswith("/api/download/"):
                 try:
-                    index = int(path.rsplit("/", 1)[1]); job = workbench.job
+                    segments = path.strip("/").split("/")
+                    # Keep /api/download/<candidate> for saved old pages, but new UI
+                    # scopes links to the generation that produced the candidate.
+                    if len(segments) == 3:
+                        index = int(segments[2]); job = workbench.job
+                    elif len(segments) == 4:
+                        job = workbench.current(int(segments[2])); index = int(segments[3])
+                    else: raise ValueError
                     candidate = job.result["candidates"][index] if job and job.result else None
                     if candidate is None: raise IndexError
                     plan, report, replay = candidate["bundle"]
@@ -177,13 +258,16 @@ def make_server(port: int = 8765) -> ThreadingHTTPServer:
             except (ValueError, json.JSONDecodeError) as exc: self._json(413, {"error":str(exc)}); return
             path = urlparse(self.path).path
             if path == "/api/search":
-                try: job = workbench.start(body); self._json(202, {"state":"started"})
+                try: job = workbench.start(body); self._json(202, {"state":"started", "generation": job.generation})
                 except (ValueError, RuntimeError) as exc: self._json(409, {"error":str(exc)})
             elif path == "/api/cancel":
                 if workbench.job: workbench.job.cancel.set()
                 self._json(200, {"state":"cancelling"})
             else: self._json(404, {"error":"not found"})
-    return ThreadingHTTPServer(("127.0.0.1", port), Handler)
+    server = ThreadingHTTPServer(("127.0.0.1", port), Handler)
+    # Kept private by convention, but available to in-process regression tests.
+    server.workbench = workbench
+    return server
 
 
 def serve(port: int = 8765) -> None:

@@ -40,7 +40,7 @@ def test_cli_rejects_symlink_collisions_and_input_overlap(tmp_path):
     plan=tmp_path/'plan.json'; plan.write_text((ROOT/'examples/checkerboard.json').read_text())
     assert main(['validate',str(plan),'--output',str(tmp_path),'--overwrite'])==2
 
-@pytest.mark.parametrize('name', ['stock.svg', 'board.svg', 'validation.json'])
+@pytest.mark.parametrize('name', ['stock.svg', 'board.svg', 'validation.json', 'replay.html'])
 @pytest.mark.parametrize('collision', ['directory', 'symlink', 'dangling_symlink'])
 def test_all_generated_collisions_are_rejected_without_modifying_outputs(tmp_path, name, collision):
     out = tmp_path / 'reports'; out.mkdir()

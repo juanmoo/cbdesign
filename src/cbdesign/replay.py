@@ -144,21 +144,41 @@ def preflight(plan: Plan):
         consumed.update(inputs); produced.update(outputs)
 
 
-def replay(plan: Plan) -> Replay:
+def replay(plan: Plan, *, trace: bool = False) -> Replay:
+    """Execute and validate a plan.
+
+    ``trace`` is opt-in: ordinary validation/search replays allocate no walkthrough
+    snapshots.  When requested, the validated return object receives an immutable
+    ``trace`` attribute containing actual operation geometry.
+    """
+    from .replay_trace import TraceLimitError, require_region_budget
     preflight(plan)
+    trace_steps = [] if trace else None
+    trace_regions = 0
+    if trace:
+        from .replay_trace import require_operation_budget
+        require_operation_budget(len(plan.operations))
     parts: dict[str, Part] = {}
-    source_sizes = {}; source_species = {}
+    source_sizes = {}; source_species = {}; trace_roots = []
     for stock in plan.stock:
         size = tuple(map(int, stock.size)); box = Box((0,0,0), size)
         parts[stock.id] = Part(stock.id, size, (_region(stock.id, stock.species, box, box, (0,1,0)),))
+        if trace:
+            trace_regions = require_region_budget(trace_regions, (parts[stock.id],))
+            trace_roots.append(parts[stock.id])
         source_sizes[stock.id] = size; source_species[stock.id] = stock.species
     state = None
     if plan.schema_version == "cbdesign-plan/v2":
         from .construction_v2 import V2State
         state = V2State(plan, parts)
     losses: dict[str, list[Region]] = defaultdict(list); joints=[]; log=[]; row_sequences={}; first_glue_panels={}; terminal_origins={}
-    for op in plan.operations:
+    for operation_index, op in enumerate(plan.operations, start=1):
         try:
+            trace_inputs = (tuple(parts[i] for i in ([op.input] if hasattr(op, "input") else op.inputs))
+                            if trace else ())
+            trace_cut = trace_surface = None
+            trace_perm = trace_sign = None
+            trace_offsets = ()
             if state is not None:
                 state.before(op, parts)
             # Capacity is evaluated at the actual operation stage, including roots later consumed.
@@ -179,16 +199,22 @@ def replay(plan: Plan) -> Replay:
                 a, k, b = Box((0,0,0), p.size).cut(op.axis, position, int(op.kerf))
                 if retain_max:
                     a, b = b, a
+                if trace:
+                    trace_cut = (a, k, b)
                 parts[op.outputs[0]] = Part(op.outputs[0], a.size, clip_regions(p.regions, a, a.origin), p.history + (op.id,))
                 parts[op.outputs[1]] = Part(op.outputs[1], b.size, clip_regions(p.regions, b, b.origin), p.history + (op.id,))
                 terminal_origins[op.outputs[1]] = op.category
                 losses["kerf"].extend(clip_regions(p.regions, k)); log.append({"id":op.id,"kind":"cut","inputs":[op.input],"outputs":list(op.outputs),"input_size_um":list(p.size),"output_sizes_um":{op.outputs[0]:list(a.size),op.outputs[1]:list(b.size)},"axis":op.axis,"retained_um":int(op.retained),"kerf_um":int(op.kerf),"kerf_volume_um3":k.volume,"tool":op.tool,"category":op.category})
             elif isinstance(op, Surface):
                 p=parts.pop(op.input); kept, rem=Box((0,0,0),p.size).remove_face(op.axis,op.side,int(op.amount))
+                if trace:
+                    trace_surface = (kept, rem)
                 parts[op.output]=Part(op.output,kept.size,clip_regions(p.regions,kept,kept.origin),p.history+(op.id,))
                 remregs=clip_regions(p.regions,rem,rem.origin); parts[op.removed]=Part(op.removed,rem.size,remregs,p.history+(op.id,)); terminal_origins[op.removed] = op.category; log.append({"id":op.id,"kind":"surface","inputs":[op.input],"outputs":[op.output,op.removed],"input_size_um":list(p.size),"output_sizes_um":{op.output:list(kept.size),op.removed:list(rem.size)},"axis":op.axis,"side":op.side,"amount_um":int(op.amount),"category":op.category,"process":op.process})
             elif isinstance(op, Rotate):
                 p=parts.pop(op.input); r=Rotation(tuple(op.perm),tuple(op.sign)); size=r.output_size(p.size)
+                if trace:
+                    trace_perm, trace_sign = tuple(op.perm), tuple(op.sign)
                 parts[op.output]=Part(op.output,size,tuple(transformed_region(x,r,p.size) for x in p.regions),p.history+(op.id,)); log.append({"id":op.id,"kind":"rotate","inputs":[op.input],"outputs":[op.output],"input_size_um":list(p.size),"output_sizes_um":{op.output:list(size)},"perm":list(op.perm),"sign":list(op.sign)})
             else:
                 ps=[parts.pop(i) for i in op.inputs]
@@ -199,12 +225,16 @@ def replay(plan: Plan) -> Replay:
                 for p in ps[1:]:
                     if any(p.size[i] != base[i] for i in range(3) if i != op.axis): raise ReplayError("incompatible_glue_faces","all non-glue extents must match",op.id,expected=base,actual=p.size)
                 regions=[]; offset=0
+                offsets=[]
                 for p in ps:
+                    offsets.append(offset)
                     for r in p.regions:
                         cur=list(r.current.origin); cur[op.axis]+=offset
                         regions.append(_region(r.source_id,r.species,r.source,Box(tuple(cur),r.current.size),r.grain,getattr(r,"axis_map",(0,1,2)),getattr(r,"axis_sign",(1,1,1))))
                     offset += p.size[op.axis]
                 base[op.axis]=offset; parts[op.output]=Part(op.output,tuple(base),tuple(regions),tuple(x for p in ps for x in p.history)+(op.id,))
+                if trace:
+                    trace_offsets = tuple(offsets)
                 if op.stage == "first":
                     # Snapshot the actual first-stage output. Later cuts/rotations must not
                     # turn descendants or the final board into panel-render candidates.
@@ -215,7 +245,18 @@ def replay(plan: Plan) -> Replay:
                 if isinstance(op, Cut):
                     log[-1]["retained_side"] = op.retained_side
                 state.after(op, parts)
-        except ReplayError: raise
+            if trace:
+                from .replay_trace import TraceStep
+                output_ids = (tuple(op.outputs) if isinstance(op, Cut) else
+                              ((op.output, op.removed) if isinstance(op, Surface) else (op.output,)))
+                trace_regions = require_region_budget(trace_regions, (*trace_inputs, *(parts[pid] for pid in output_ids)))
+                trace_steps.append(TraceStep(
+                    operation_index, op.id, op.kind, trace_inputs,
+                    tuple(parts[part_id] for part_id in output_ids),
+                    tuple(part.id for part in trace_inputs), output_ids,
+                    trace_cut, trace_surface, trace_perm, trace_sign, trace_offsets,
+                    getattr(op, "axis", None), getattr(op, "retained_side", None)))
+        except (ReplayError, TraceLimitError): raise
         except ValueError as e: raise ReplayError("invalid_operation_geometry",str(e),op.id) from e
     if plan.finishing.terminal not in parts: raise ReplayError("missing_terminal","finishing terminal does not exist",part=plan.finishing.terminal)
     terminal=plan.finishing.terminal
@@ -244,6 +285,10 @@ def replay(plan: Plan) -> Replay:
     rep=Replay(parts,terminal,losses,joints,log,source_sizes,source_species,row_sequences,first_glue_panels)
     final_glue = state.finish(rep) if state is not None else None
     _validate(rep, plan, final_glue)
+    # Only publish a trace once the same authoritative replay has passed validation.
+    if trace:
+        from .replay_trace import build_trace
+        rep.trace = build_trace(trace_roots, trace_steps, rep.parts[terminal])
     return rep
 
 

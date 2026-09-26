@@ -6,7 +6,8 @@ Updated 2026-09-24. This is an implemented local software release with explicitl
 
 - N1: `a982b94`; 99 baseline tests. [Python 3.12/3.13 CI](https://github.com/juanmoo/cbdesign/actions/runs/35957916069) passed.
 - End-to-end compiler/search/workbench: `b260eef`. [Python 3.12/3.13 CI](https://github.com/juanmoo/cbdesign/actions/runs/35959985903) passed, including build and real validate/generate/search commands.
-- Final gallery/verification changes follow on branch `software-completion`.
+- Gallery checkpoint: `f9bba16` on `software-completion`; [Python 3.12/3.13 CI](https://github.com/juanmoo/cbdesign/actions/runs/35960646712) passed.
+- Step-by-step replay is a subsequent local change; the checkpoint CI above does not cover it.
 
 ## Implemented and verified
 
@@ -16,7 +17,8 @@ Updated 2026-09-24. This is an implemented local software release with explicitl
 - **F1:** separate digest-bound declarations, named affine Fraction propagation, shared-setting correlation, all-realizations glue equality, positivity/capacity/material guards and final intervals. Nonzero accepted examples and endpoint/negative regressions exist. Unsupported/malformed input cannot receive a dimensional-valid label.
 - **F2:** loopback-only HTTP server with Host/Origin checks, bounded requests/work, editable illustrative stock/dimensions, PNG upload, project save/load, progress/cancel, actual board/difference SVGs and ZIP downloads.
 - **F3:** common deterministic JSON/SVG/CSV/PDF reports, plus gallery PNGs and a mouse report. PDF table and representative pages visually inspected; physical diagrams remain distinct from target pixels.
-- **Local tests:** 148 passing before final publication, including an independent partial-cell physical-area oracle. Compiler tests deliberately exercise invalid model copies and emit Pydantic serializer warnings.
+- **Replay walkthrough:** opt-in validated snapshots for all cuts, surfaces, rotations and glues; two stock types distinguished from allocated source segments; before/after exposed-face SVGs, kerf/removal overlays, grain, dimensions and producer/consumer navigation. Lazy generation-scoped browser routes and bounded single-candidate cache; deterministic offline `replay.html` in exports. Stripe browser navigation and offline ZIP navigation passed with 24 roots, 251 operations and 110 saw cuts, no JS errors, and no horizontal overflow at 390px in the inspected run.
+- **Local tests:** 167 passing after replay walkthrough integration, including an independent partial-cell physical-area oracle. Compiler tests deliberately exercise invalid model copies and emit Pydantic serializer warnings.
 - **Actual runtime:** CLI demo/generate/search and installed-wheel generation pass. Chromium mouse PNG upload → four alternatives → nominal-valid ZIP → project/PNG save/reload passes. Cancellation preserves a validated incumbent; invalid dimensions show a diagnostic. No browser JS errors and no horizontal overflow at 390px in inspected run.
 
 ## Measured example
@@ -30,7 +32,7 @@ For the fixed 64×64 mouse target on a 12×12 construction grid, selected mismat
 - **Target fit:** exact requests describe the pre-trim grid. Fixed-finished-rectangle targets can therefore have substantial mismatch even for a regular checkerboard. Search scoring is exact, but the proposal heuristic is not fully trim-aware.
 - **UI:** browser search currently uses a fixed 12×12 construction grid, with editable target sampling dimensions; alternate construction grids and K up to 8 are exposed through CLI/library. Uploaded targets use default threshold/crop choices in the UI (explicit controls are library/CLI-level). Full advanced shop profile editing and uncertainty-sidecar authoring are JSON/library workflows.
 - **Work limits:** cancellation/time checks are cooperative between candidates, not hard interruption inside one compile/replay.
-- **Exports:** printable reports are text/tables, not detailed per-operation geometry sheets. The conservative mouse plan produces a long operation report. No external viewer library was added: existing replay-derived SVGs preserve authoritative IDs and geometry without another scene model.
+- **Exports:** printable PDF reports remain text/tables; per-operation geometry is available in the browser/offline HTML walkthrough, not printable shop sheets. Views are orthographic exposed faces with projected operation highlights, not 3D animation or machine setups. Tracing is bounded to 2,000 operations/100,000 recorded regions, individual rendered steps to 2 MB and offline HTML to 16 MiB; oversized exports contain an explicit unavailable notice alongside complete plan/CSV reports. The conservative mouse plan still produces a long operation report.
 - **Uncertainty:** supported dimensional process assumptions only; no guarantee of real process capability, required physical preparation quality, statistical yield, or wood stability. Zero-width helper is a format demonstration, not measured shop data.
 
 ## Non-software gates

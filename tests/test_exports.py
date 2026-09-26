@@ -26,6 +26,8 @@ def test_common_bundle_is_deterministic_and_replay_derived(reference):
     first = plan_bundle(plan, report, replay)
     assert first == plan_bundle(plan, report, replay)
     assert first['report.pdf'].startswith(b'%PDF-')
+    assert b'id="replay-data"' in first['replay.html']
+    assert b'fetch(' not in first['replay.html']
     assert json.loads(first['plan.json']) == plan.model_dump(mode='json')
     operations = list(csv.DictReader(io.StringIO(first['operations.csv'].decode())))
     assert len(operations) == len(replay.operations)
